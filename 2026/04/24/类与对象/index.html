@@ -6,15 +6,15 @@
   
   <title>类与对象 | dejavu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="类是没有实体的模板、设计图，它定义了某一类事物的共同特征（属性）和行为（方法）。以“手机”为例，它作为一个类，包含以下核心要素：共同特征（属性）：品牌、型号、颜色、内存共同行为（方法）：打电话、发消息、拍照类本身是抽象的，无法直接看到、摸到，其核心作用是约定这类事物必须具备的属性和行为。对象是根据类的模板创建出来的具体实体，是类的实例化结果.类与对象的核心关系的是：类是对象的模板，对象是类的实例；">
+  <meta name="description" content="类是没有实体的模板、设计图，它定义了某一类事物的共同特征（属性）和行为（方法）。 以“手机”为例，它作为一个类，包含以下核心要素：  共同特征（属性）：品牌、型号、颜色、内存 共同行为（方法）：打电话、发消息、拍照  类本身是抽象的，无法直接看到、摸到，其核心作用是约定这类事物必须具备的属性和行为。 对象是根据类的模板创建出来的具体实体，是类的实例化结果。 类与对象的核心关系是：类是对象的模板，对">
 <meta property="og:type" content="article">
 <meta property="og:title" content="类与对象">
 <meta property="og:url" content="http://example.com/2026/04/24/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/index.html">
 <meta property="og:site_name" content="dejavu">
-<meta property="og:description" content="类是没有实体的模板、设计图，它定义了某一类事物的共同特征（属性）和行为（方法）。以“手机”为例，它作为一个类，包含以下核心要素：共同特征（属性）：品牌、型号、颜色、内存共同行为（方法）：打电话、发消息、拍照类本身是抽象的，无法直接看到、摸到，其核心作用是约定这类事物必须具备的属性和行为。对象是根据类的模板创建出来的具体实体，是类的实例化结果.类与对象的核心关系的是：类是对象的模板，对象是类的实例；">
+<meta property="og:description" content="类是没有实体的模板、设计图，它定义了某一类事物的共同特征（属性）和行为（方法）。 以“手机”为例，它作为一个类，包含以下核心要素：  共同特征（属性）：品牌、型号、颜色、内存 共同行为（方法）：打电话、发消息、拍照  类本身是抽象的，无法直接看到、摸到，其核心作用是约定这类事物必须具备的属性和行为。 对象是根据类的模板创建出来的具体实体，是类的实例化结果。 类与对象的核心关系是：类是对象的模板，对">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-04-23T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-04-24T07:02:46.432Z">
+<meta property="article:modified_time" content="2026-04-24T07:05:52.162Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="入门">
 <meta name="twitter:card" content="summary">
@@ -100,7 +100,34 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>类是没有实体的模板、设计图，它定义了某一类事物的共同特征（属性）和行为（方法）。以“手机”为例，它作为一个类，包含以下核心要素：<br>共同特征（属性）：品牌、型号、颜色、内存<br>共同行为（方法）：打电话、发消息、拍照<br>类本身是抽象的，无法直接看到、摸到，其核心作用是约定这类事物必须具备的属性和行为。<br>对象是根据类的模板创建出来的具体实体，是类的实例化结果.<br>类与对象的核心关系的是：类是对象的模板，对象是类的实例；一个类可以创建无数个对象，所有对象都拥有类定义的属性和行为，但不同对象的属性值可以存在差异。<br>类的定义有固定格式，核心结构为：修饰符 + class + 类名 + { 属性 + 方法 }<br>public class Phone {<br>    &#x2F;&#x2F; 1. 定义属性（成员变量）：类的特征<br>    String brand; &#x2F;&#x2F; 品牌<br>    String model; &#x2F;&#x2F; 型号<br>    String color; &#x2F;&#x2F; 颜色<br>    int memory;   &#x2F;&#x2F; 内存（单位：G）<br>}<br>类定义完成后，需创建对象才能使用其属性和方法，核心步骤为：创建对象 → 给对象的属性赋值 → 调用对象的方法<br>创建对象的关键是“new 类名()”，new关键字的作用是为对象分配内存空间；<br>每个对象都是独立的个体，修改一个对象的属性值，不会影响其他对象，例如修改myPhone的颜色，yourPhone的颜色不会发生变化；<br>方法的调用必须通过“对象名.方法名()”的方式，类作为抽象模板，无法直接调用其方法。<br>类是定义事物属性和行为的模板，对象是根据模板创建的具体实体，通过对象才能实现类的功能。Java面向对象的核心是“定义类→创建对象→操作对象”</p>
+        <p>类是没有实体的模板、设计图，它定义了某一类事物的共同特征（属性）和行为（方法）。</p>
+<p>以“手机”为例，它作为一个类，包含以下核心要素：</p>
+<ul>
+<li>共同特征（属性）：品牌、型号、颜色、内存</li>
+<li>共同行为（方法）：打电话、发消息、拍照</li>
+</ul>
+<p>类本身是抽象的，无法直接看到、摸到，其核心作用是约定这类事物必须具备的属性和行为。</p>
+<p>对象是根据类的模板创建出来的具体实体，是类的实例化结果。</p>
+<p>类与对象的核心关系是：<br><strong>类是对象的模板，对象是类的实例</strong>。<br>一个类可以创建无数个对象，所有对象都拥有类定义的属性和行为，但不同对象的属性值可以存在差异。</p>
+<hr>
+<h2 id="一、定义类（模板）"><a href="#一、定义类（模板）" class="headerlink" title="一、定义类（模板）"></a>一、定义类（模板）</h2><p>类的定义格式：<br><code>修饰符 + class + 类名 + { 属性 + 方法 }</code></p>
+<pre><code class="language-java">public class Phone {
+    // 成员变量（属性）
+    String brand;  // 品牌
+    String model;  // 型号
+    String color;  // 颜色
+    int memory;    // 内存
+
+    // 成员方法（行为）
+    public void call() {
+        System.out.println(brand + &quot; &quot; + model + &quot; 正在打电话&quot;);
+    }
+
+    public void sendMessage() {
+        System.out.println(brand + &quot; &quot; + model + &quot; 正在发消息&quot;);
+    }
+}
+</code></pre>
 
       
     </div>
