@@ -97,7 +97,8 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>&#x2F;&#x2F; 饼图类<br>class PieChart {<br>    public void display() {<br>        System.out.println(“绘制饼图”);<br>    }<br>}</p>
+        <p>开闭原则（Open&#x2F;Closed Principle，OCP）：对扩展开放（Open for extension）当需要新增功能时，我们应该可以通过 ** 新增代码（比如新建类、新增实现）** 来完成，而不是修改已有的代码。系统要设计得具备足够的灵活性，能轻松支持功能的扩展。<br>对修改关闭（Closed for modification）已经稳定运行、经过测试的代码，应尽量避免直接修改其源码。因为修改旧代码很容易引入新的 Bug，影响原本正常的功能。</p>
+<p>&#x2F;&#x2F; 饼图类<br>class PieChart {<br>    public void display() {<br>        System.out.println(“绘制饼图”);<br>    }<br>}</p>
 <p>&#x2F;&#x2F; 柱状图类<br>class BarChart {<br>    public void display() {<br>        System.out.println(“绘制柱状图”);<br>    }<br>}</p>
 <p>&#x2F;&#x2F; 图表展示类（核心类）<br>class ChartDisplay {<br>    &#x2F;&#x2F; 根据类型展示图表<br>    public void showChart(String type) {<br>        if (“pie”.equals(type)) {<br>            PieChart pieChart &#x3D; new PieChart();<br>            pieChart.display();<br>        } else if (“bar”.equals(type)) {<br>            BarChart barChart &#x3D; new BarChart();<br>            barChart.display();<br>        }<br>        &#x2F;&#x2F; 新增图表类型，必须在这里添加else-if分支<br>    }<br>}<br>原始设计缺陷<br>违反开闭原则：新增折线图、散点图等图表类型时，必须修改ChartDisplay类的showChart方法，添加新的if-else分支，破坏了原有代码逻辑。<br>耦合度极高：ChartDisplay直接依赖具体的图表实现类，高层模块与底层实现紧密绑定，代码灵活性极差。<br>扩展性差：每一次扩展都需要改动核心代码，增加测试和维护成本，还容易引发连锁 BUG。<br>代码冗余：多个图表类重复定义display方法，缺乏统一规范。<br>二、三步重构：遵循开闭原则优化系统<br>针对上述问题，我们基于开闭原则，通过抽象化 + 多态的思路重构代码，核心思路是：依赖抽象，不依赖具体实现，将系统分为抽象层和实现层，实现扩展与修改分离。<br>第一步：定义抽象图表父类<br>抽取所有图表的公共行为（展示图表），定义抽象图表类或接口，统一图表的行为规范，让所有具体图表都遵循该契约。<br>java<br>运行<br>&#x2F;&#x2F; 抽象图表类（抽象层）<br>abstract class Chart {<br>    &#x2F;&#x2F; 抽象展示方法，所有子类必须实现<br>    public abstract void display();<br>}<br>第二步：具体图表类继承抽象类<br>让饼图、柱状图等具体图表类，继承抽象图表父类，实现各自的display方法。此时具体图表只关注自身的实现逻辑，与核心展示类解耦。<br>java<br>运行<br>&#x2F;&#x2F; 饼图（具体实现类）<br>class PieChart extends Chart {<br>    @Override<br>    public void display() {<br>        System.out.println(“绘制饼图”);<br>    }<br>}</p>
 <p>&#x2F;&#x2F; 柱状图（具体实现类）<br>class BarChart extends Chart {<br>    @Override<br>    public void display() {<br>        System.out.println(“绘制柱状图”);<br>    }<br>}<br>第三步：重构 ChartDisplay，依赖抽象<br>改造核心的ChartDisplay类，不再依赖具体的图表实现类，而是依赖抽象的 Chart 父类，通过多态调用图表展示方法，彻底移除if-else判断逻辑。<br>java<br>运行<br>&#x2F;&#x2F; 重构后的图表展示类（核心类）<br>class ChartDisplay {<br>    &#x2F;&#x2F; 依赖抽象Chart，而非具体图表类<br>    private Chart chart;</p>
@@ -131,7 +132,50 @@ public void showChart() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/05/08/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/" data-id="cuidDBwzaSnsAmrhKiDeX3CRI" data-title="开闭原则" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/05/08/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/" data-id="cuidOYaTgvMX8m1GgTiPhwMSG" data-title="开闭原则" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-单一职责原则" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/05/08/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/" class="article-date">
+  <time class="dt-published" datetime="2026-05-07T16:00:00.000Z" itemprop="datePublished">2026-05-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/05/08/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/">单一职责原则</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>单一职责原则（SRP）核心定义：一个类只应有一个引起它变化的原因，一个类只负责一项职责。<br>如果一个类包揽多种毫不相关的功能，界面、业务逻辑、数据库操作全写在同一个类里，会造成耦合严重、难维护、难扩展、改一处牵动全身，后续迭代极易出 Bug。<br>原始的 Login 类包揽了三类完全不同的职责：<br>界面交互：init()、display()<br>业务校验：validate()<br>数据访问：getConnection()、findUser()<br>这种设计耦合度极高，界面、业务或数据库任何一处变更，都需要修改这个类，极易引发连锁问题。<br>重构方案<br>按职责边界拆分，各司其职：<br>界面层 LoginUI：只负责界面初始化与展示<br>public class LoginUI {<br>    public void init() { &#x2F;* 初始化界面 <em>&#x2F; }<br>    public void display() { &#x2F;</em> 展示界面 <em>&#x2F; }<br>}<br>业务层 LoginService：只负责登录规则与数据校验<br>public class LoginService {<br>    public boolean validate(String username, String password) { &#x2F;</em> 校验格式 <em>&#x2F; }<br>}<br>数据层 UserDAO：只负责数据库连接与用户查询<br>public class UserDAO {<br>    public Connection getConnection() { &#x2F;</em> 获取连接 <em>&#x2F; }<br>    public boolean findUser(String username, String password) { &#x2F;</em> 查询用户 <em>&#x2F; }<br>}<br>控制层 LoginController：只负责串联整体流程<br>public class LoginController {<br>    private LoginUI ui;<br>    private LoginService service;<br>    private UserDAO dao;<br>    public void login(String username, String password) { &#x2F;</em> 调度流程 *&#x2F; }<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/05/08/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/" data-id="cuidbZLAyQ7Rv9PYuKGFN9MM9" data-title="单一职责原则" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -189,7 +233,7 @@ public void showChart() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/05/05/%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%96%B9%E6%B3%95/" data-id="cuidyiCdmduDI1X7JjBwtUrex" data-title="形式化方法" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/05/05/%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%96%B9%E6%B3%95/" data-id="cuidPTUJARE2KKjbQHPxTgo9g" data-title="形式化方法" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -235,7 +279,7 @@ public void showChart() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/05/01/%E5%85%B3%E9%94%AE%E5%AD%97/" data-id="cuidvKI5xf0i0SaCYATC1inq6" data-title="java常见关键字" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/05/01/%E5%85%B3%E9%94%AE%E5%AD%97/" data-id="cuidIdrPOQFZ17zHuMITjZqo3" data-title="java常见关键字" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -307,7 +351,7 @@ public void showChart() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/24/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" data-id="cuidolmEuZynpX0SrNBTfsW4D" data-title="类与对象" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/24/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" data-id="cuidDIaM7VdWsEtIANH4XoDml" data-title="类与对象" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -368,7 +412,7 @@ public class Main {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/15/2/" data-id="cuidJ743nv8O9b_LXpLvInuV_" data-title="Java 格式化当前系统时间" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/15/2/" data-id="cuidsommO4vshsyfQGZ9VbW25" data-title="Java 格式化当前系统时间" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -444,7 +488,7 @@ public class Main {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/15/%E5%9F%83%E6%B0%8F%E7%AD%9B%E7%B4%A0%E6%95%B0/" data-id="cuidtVz65DRqyK4hM3lNAjfHO" data-title="给定要筛数值的范围 n ，从2开始，将每个素数的各倍数标记成合数。如果一个数没有被之前的数标记，那它一定是素数预先建立数组来存储从 1 至 n 的所有素数，方便多次查找" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/15/%E5%9F%83%E6%B0%8F%E7%AD%9B%E7%B4%A0%E6%95%B0/" data-id="cuidoUdo8dvqaMsQUdFM_zzOq" data-title="给定要筛数值的范围 n ，从2开始，将每个素数的各倍数标记成合数。如果一个数没有被之前的数标记，那它一定是素数预先建立数组来存储从 1 至 n 的所有素数，方便多次查找" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -495,7 +539,7 @@ public class Main {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/09/hello-world/" data-id="cuid3wmMBR9NU6tz5EMkkfGl9" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/09/hello-world/" data-id="cuid3Q883rhhyIq_mkxtZKJvU" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -543,7 +587,7 @@ public class Main {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/09/1/" data-id="cuidrSgCQzAF8lrYOsgkpYR6s" data-title="我的第一个Java程序" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/09/1/" data-id="cuiddBJ2STZ0pjdVVN7qS-QYk" data-title="我的第一个Java程序" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -613,6 +657,10 @@ public class Main {
           </li>
         
           <li>
+            <a href="/2026/05/08/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/">单一职责原则</a>
+          </li>
+        
+          <li>
             <a href="/2026/05/05/%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%96%B9%E6%B3%95/">形式化方法</a>
           </li>
         
@@ -622,10 +670,6 @@ public class Main {
         
           <li>
             <a href="/2026/04/24/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/">类与对象</a>
-          </li>
-        
-          <li>
-            <a href="/2026/04/15/2/">Java 格式化当前系统时间</a>
           </li>
         
       </ul>
