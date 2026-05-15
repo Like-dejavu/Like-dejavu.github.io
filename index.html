@@ -71,6 +71,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-单一职责原则" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/05/08/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/" class="article-date">
+  <time class="dt-published" datetime="2026-05-07T16:00:00.000Z" itemprop="datePublished">2026-05-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/05/08/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/">单一职责原则</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>单一职责原则（SRP）核心定义：一个类只应有一个引起它变化的原因，一个类只负责一项职责。<br>如果一个类包揽多种毫不相关的功能，界面、业务逻辑、数据库操作全写在同一个类里，会造成耦合严重、难维护、难扩展、改一处牵动全身，后续迭代极易出 Bug。<br>原始的 Login 类包揽了三类完全不同的职责：<br>界面交互：init()、display()<br>业务校验：validate()<br>数据访问：getConnection()、findUser()<br>这种设计耦合度极高，界面、业务或数据库任何一处变更，都需要修改这个类，极易引发连锁问题。<br>重构方案<br>按职责边界拆分，各司其职：<br>界面层 LoginUI：只负责界面初始化与展示<br>public class LoginUI {<br>    public void init() { &#x2F;* 初始化界面 <em>&#x2F; }<br>    public void display() { &#x2F;</em> 展示界面 <em>&#x2F; }<br>}<br>业务层 LoginService：只负责登录规则与数据校验<br>public class LoginService {<br>    public boolean validate(String username, String password) { &#x2F;</em> 校验格式 <em>&#x2F; }<br>}<br>数据层 UserDAO：只负责数据库连接与用户查询<br>public class UserDAO {<br>    public Connection getConnection() { &#x2F;</em> 获取连接 <em>&#x2F; }<br>    public boolean findUser(String username, String password) { &#x2F;</em> 查询用户 <em>&#x2F; }<br>}<br>控制层 LoginController：只负责串联整体流程<br>public class LoginController {<br>    private LoginUI ui;<br>    private LoginService service;<br>    private UserDAO dao;<br>    public void login(String username, String password) { &#x2F;</em> 调度流程 *&#x2F; }<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/05/08/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/" data-id="cuidT8L07y5xHYWI0RBrXKNLu" data-title="单一职责原则" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-开闭原则" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2026/05/08/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/" class="article-date">
@@ -132,50 +175,7 @@ public void showChart() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/05/08/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/" data-id="cuidOYaTgvMX8m1GgTiPhwMSG" data-title="开闭原则" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-单一职责原则" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/05/08/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/" class="article-date">
-  <time class="dt-published" datetime="2026-05-07T16:00:00.000Z" itemprop="datePublished">2026-05-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/05/08/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/">单一职责原则</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>单一职责原则（SRP）核心定义：一个类只应有一个引起它变化的原因，一个类只负责一项职责。<br>如果一个类包揽多种毫不相关的功能，界面、业务逻辑、数据库操作全写在同一个类里，会造成耦合严重、难维护、难扩展、改一处牵动全身，后续迭代极易出 Bug。<br>原始的 Login 类包揽了三类完全不同的职责：<br>界面交互：init()、display()<br>业务校验：validate()<br>数据访问：getConnection()、findUser()<br>这种设计耦合度极高，界面、业务或数据库任何一处变更，都需要修改这个类，极易引发连锁问题。<br>重构方案<br>按职责边界拆分，各司其职：<br>界面层 LoginUI：只负责界面初始化与展示<br>public class LoginUI {<br>    public void init() { &#x2F;* 初始化界面 <em>&#x2F; }<br>    public void display() { &#x2F;</em> 展示界面 <em>&#x2F; }<br>}<br>业务层 LoginService：只负责登录规则与数据校验<br>public class LoginService {<br>    public boolean validate(String username, String password) { &#x2F;</em> 校验格式 <em>&#x2F; }<br>}<br>数据层 UserDAO：只负责数据库连接与用户查询<br>public class UserDAO {<br>    public Connection getConnection() { &#x2F;</em> 获取连接 <em>&#x2F; }<br>    public boolean findUser(String username, String password) { &#x2F;</em> 查询用户 <em>&#x2F; }<br>}<br>控制层 LoginController：只负责串联整体流程<br>public class LoginController {<br>    private LoginUI ui;<br>    private LoginService service;<br>    private UserDAO dao;<br>    public void login(String username, String password) { &#x2F;</em> 调度流程 *&#x2F; }<br>}</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/05/08/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/" data-id="cuidbZLAyQ7Rv9PYuKGFN9MM9" data-title="单一职责原则" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/05/08/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/" data-id="cuid1WDslIfT-LlDAD08OUaWH" data-title="开闭原则" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -233,7 +233,7 @@ public void showChart() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/05/05/%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%96%B9%E6%B3%95/" data-id="cuidPTUJARE2KKjbQHPxTgo9g" data-title="形式化方法" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/05/05/%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%96%B9%E6%B3%95/" data-id="cuid3TSy2KgB2qL-ZCmnoOpeM" data-title="形式化方法" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -279,7 +279,7 @@ public void showChart() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/05/01/%E5%85%B3%E9%94%AE%E5%AD%97/" data-id="cuidIdrPOQFZ17zHuMITjZqo3" data-title="java常见关键字" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/05/01/%E5%85%B3%E9%94%AE%E5%AD%97/" data-id="cuid_Arl029txszfwLJrymX_J" data-title="java常见关键字" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -351,7 +351,7 @@ public void showChart() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/24/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" data-id="cuidDIaM7VdWsEtIANH4XoDml" data-title="类与对象" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/24/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" data-id="cuidUGi9kXXq1TrPamCB-XTm5" data-title="类与对象" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -412,7 +412,7 @@ public class Main {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/15/2/" data-id="cuidsommO4vshsyfQGZ9VbW25" data-title="Java 格式化当前系统时间" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/15/2/" data-id="cuidHBtQmnwRRVw5YrlQpOYjV" data-title="Java 格式化当前系统时间" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -488,7 +488,7 @@ public class Main {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/15/%E5%9F%83%E6%B0%8F%E7%AD%9B%E7%B4%A0%E6%95%B0/" data-id="cuidoUdo8dvqaMsQUdFM_zzOq" data-title="给定要筛数值的范围 n ，从2开始，将每个素数的各倍数标记成合数。如果一个数没有被之前的数标记，那它一定是素数预先建立数组来存储从 1 至 n 的所有素数，方便多次查找" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/15/%E5%9F%83%E6%B0%8F%E7%AD%9B%E7%B4%A0%E6%95%B0/" data-id="cuid0OWDPZLj6_0jzP2QzvWJd" data-title="给定要筛数值的范围 n ，从2开始，将每个素数的各倍数标记成合数。如果一个数没有被之前的数标记，那它一定是素数预先建立数组来存储从 1 至 n 的所有素数，方便多次查找" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -539,7 +539,7 @@ public class Main {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/09/hello-world/" data-id="cuid3Q883rhhyIq_mkxtZKJvU" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/09/hello-world/" data-id="cuidlnUldV7kBq3BYybxmQ2nQ" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -587,7 +587,7 @@ public class Main {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/09/1/" data-id="cuiddBJ2STZ0pjdVVN7qS-QYk" data-title="我的第一个Java程序" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/09/1/" data-id="cuidJpsOYeqe3GEzIgzsyLZ3O" data-title="我的第一个Java程序" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -653,11 +653,11 @@ public class Main {
       <ul>
         
           <li>
-            <a href="/2026/05/08/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/">开闭原则</a>
+            <a href="/2026/05/08/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/">单一职责原则</a>
           </li>
         
           <li>
-            <a href="/2026/05/08/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/">单一职责原则</a>
+            <a href="/2026/05/08/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/">开闭原则</a>
           </li>
         
           <li>
