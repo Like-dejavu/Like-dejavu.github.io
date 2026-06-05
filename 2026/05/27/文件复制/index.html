@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>文本文件复制、任意文件复制 | dejavu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Java IO 流文件复制字符缓冲流仅用于纯文本复制，字节缓冲流万能适配全类型文件（图片 &#x2F; 视频 &#x2F; 压缩包等）。 一、IO 流基础概念区分1. 字符流（Reader&#x2F;Writer）以字符为单位读写，内置字符编码解析，仅支持 txt、md、java 等纯文本文件，无法解析图片、视频等二进制数据，文件损坏概率极高。 缓冲实现类：BufferedReader、Buffe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文本文件复制、任意文件复制">
+<meta property="og:url" content="http://example.com/2026/05/27/%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6/index.html">
+<meta property="og:site_name" content="dejavu">
+<meta property="og:description" content="Java IO 流文件复制字符缓冲流仅用于纯文本复制，字节缓冲流万能适配全类型文件（图片 &#x2F; 视频 &#x2F; 压缩包等）。 一、IO 流基础概念区分1. 字符流（Reader&#x2F;Writer）以字符为单位读写，内置字符编码解析，仅支持 txt、md、java 等纯文本文件，无法解析图片、视频等二进制数据，文件损坏概率极高。 缓冲实现类：BufferedReader、Buffe">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-05-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-05T04:00:06.367Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="入门">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="dejavu" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">dejavu</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-文件复制" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/05/27/%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6/" class="article-date">
+  <time class="dt-published" datetime="2026-05-26T16:00:00.000Z" itemprop="datePublished">2026-05-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      文本文件复制、任意文件复制
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Java-IO-流文件复制"><a href="#Java-IO-流文件复制" class="headerlink" title="Java IO 流文件复制"></a>Java IO 流文件复制</h1><p>字符缓冲流仅用于纯文本复制，字节缓冲流万能适配全类型文件（图片 &#x2F; 视频 &#x2F; 压缩包等）。</p>
+<h2 id="一、IO-流基础概念区分"><a href="#一、IO-流基础概念区分" class="headerlink" title="一、IO 流基础概念区分"></a>一、IO 流基础概念区分</h2><h3 id="1-字符流（Reader-Writer）"><a href="#1-字符流（Reader-Writer）" class="headerlink" title="1. 字符流（Reader&#x2F;Writer）"></a>1. 字符流（Reader&#x2F;Writer）</h3><p>以字符为单位读写，内置字符编码解析，仅支持 <code>txt</code>、<code>md</code>、<code>java</code> 等纯文本文件，无法解析图片、视频等二进制数据，文件损坏概率极高。</p>
+<p>缓冲实现类：<code>BufferedReader</code>、<code>BufferedWriter</code>，自带默认 8192 字符缓冲区，减少磁盘 IO 次数，提升读写效率。</p>
+<h3 id="2-字节流（InputStream-OutputStream）"><a href="#2-字节流（InputStream-OutputStream）" class="headerlink" title="2. 字节流（InputStream&#x2F;OutputStream）"></a>2. 字节流（InputStream&#x2F;OutputStream）</h3><p>以原始字节为单位读写，不做编码转换，万能兼容任意格式文件，是项目中文件复制的通用选型。</p>
+<p>缓冲实现类：<code>BufferedInputStream</code>、<code>BufferedOutputStream</code>，默认缓冲区 8192 字节，批量读写优化性能。</p>
+<blockquote>
+<p>总结：<br>文本复制优先使用字符缓冲流，任意文件统一使用字节缓冲流。</p>
+</blockquote>
+<hr>
+<h2 id="二、字符缓冲流实现文本文件复制"><a href="#二、字符缓冲流实现文本文件复制" class="headerlink" title="二、字符缓冲流实现文本文件复制"></a>二、字符缓冲流实现文本文件复制</h2><pre><code class="language-java">import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+/**
+ * 字符缓冲流：纯文本专用复制
+ */
+public class CharBufferCopy {
+    public static void main(String[] args) {
+        // 源文件路径、目标生成文件路径
+        String sourcePath = &quot;source.md&quot;;
+        String targetPath = &quot;copy_source.md&quot;;
+
+        // try-with-resources：JDK7特性，代码结束自动关闭流资源，无需手动close()
+        try (BufferedReader br = new BufferedReader(new FileReader(sourcePath));
+             BufferedWriter bw = new BufferedWriter(new FileWriter(targetPath))) {
+
+            String contentLine;
+            // readLine()：读取一行文本，读到文件末尾返回null
+            while ((contentLine = br.readLine()) != null) {
+                bw.write(contentLine);
+                bw.newLine(); // 写入换行符，还原原文件换行格式
+            }
+            System.out.println(&quot;✅ 文本文件复制完成&quot;);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+/**
+ * 字节缓冲流：任意文件万能复制
+ */
+public class ByteBufferCopy {
+    public static void main(String[] args) {
+        // 可替换jpg/mp4/zip/pdf任意文件
+        String sourcePath = &quot;demo.jpg&quot;;
+        String targetPath = &quot;copy_demo.jpg&quot;;
+        // 自定义字节缓冲区，常用1024/4096字节
+        byte[] buffer = new byte[1024];
+
+        try (BufferedInputStream bis = new BufferedInputStream(new FileInputStream(sourcePath));
+             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(targetPath))) {
+
+            int len; // len代表单次实际读取到的字节长度，-1为文件读取完毕
+            while ((len = bis.read(buffer)) != -1) {
+                bos.write(buffer, 0, len);
+            }
+            bos.flush(); // 强制刷新缓冲区，将残留数据写入磁盘
+            System.out.println(&quot;✅ 任意格式文件复制完成&quot;);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+## 四、总结
+日常纯文本复制：字符缓冲流，简洁高效，方便对文本内容做二次处理。
+项目通用文件迁移：字节缓冲流，万能复制，适配全类型文件，是生产环境标准方案。
+IO 缓冲流核心价值：通过内存缓冲区减少频繁磁盘 IO，相比原生 FileReader/FileInputStream 单字节读写，性能提升数十倍。
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/05/27/%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6/" data-id="cuidNSeG3KG6duQ9yWxJzh20n" data-title="文本文件复制、任意文件复制" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2026/05/18/%E6%95%B0%E7%BB%84/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">数组</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/" rel="tag">代码示例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">后端开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/" style="font-size: 10px;">代码示例</a> <a href="/tags/%E5%85%A5%E9%97%A8/" style="font-size: 20px;">入门</a> <a href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">后端开发</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/05/">May 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">April 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/05/27/%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6/">文本文件复制、任意文件复制</a>
+          </li>
+        
+          <li>
+            <a href="/2026/05/18/%E6%95%B0%E7%BB%84/">数组</a>
+          </li>
+        
+          <li>
+            <a href="/2026/05/15/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/05/08/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/">单一职责原则</a>
+          </li>
+        
+          <li>
+            <a href="/2026/05/08/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/">开闭原则</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
