@@ -4,14 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Archives: 2026/5 | dejavu</title>
+  <title>Java两种创建线程方式：继承Thread类 VS 实现Runnable接口 | dejavu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="dejavu">
-<meta property="og:url" content="http://example.com/archives/2026/05/index.html">
+  <meta name="description" content="继承Thread类与实现Runnable接口创建线程的区别一、两种方式代码示例1. 继承Thread子类方式&#x2F;&#x2F; 1.自定义类继承Thread，重写run() class MyThread extends Thread{     @Override     public void run() {         &#x2F;&#x2F; 线程执行任务         System.out.println(&quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java两种创建线程方式：继承Thread类 VS 实现Runnable接口">
+<meta property="og:url" content="http://example.com/2026/06/07/%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
 <meta property="og:site_name" content="dejavu">
+<meta property="og:description" content="继承Thread类与实现Runnable接口创建线程的区别一、两种方式代码示例1. 继承Thread子类方式&#x2F;&#x2F; 1.自定义类继承Thread，重写run() class MyThread extends Thread{     @Override     public void run() {         &#x2F;&#x2F; 线程执行任务         System.out.println(&quot;">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-06-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-05T04:08:20.251Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="多线程">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="dejavu" type="application/atom+xml">
@@ -69,147 +74,102 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2026" class="archive-year">2026</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2026/05/27/%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6/" class="archive-article-date">
-  <time class="dt-published" datetime="2026-05-26T16:00:00.000Z" itemprop="datePublished">May 27</time>
+        <section id="main"><article id="post-线程创建的区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/06/07/%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time class="dt-published" datetime="2026-06-06T16:00:00.000Z" itemprop="datePublished">2026-06-07</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2026/05/27/%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6/">文本文件复制、任意文件复制</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      Java两种创建线程方式：继承Thread类 VS 实现Runnable接口
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2026/05/18/%E6%95%B0%E7%BB%84/" class="archive-article-date">
-  <time class="dt-published" datetime="2026-05-17T16:00:00.000Z" itemprop="datePublished">May 18</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2026/05/18/%E6%95%B0%E7%BB%84/">数组</a>
-    </h1>
-  
+        <h1 id="继承Thread类与实现Runnable接口创建线程的区别"><a href="#继承Thread类与实现Runnable接口创建线程的区别" class="headerlink" title="继承Thread类与实现Runnable接口创建线程的区别"></a>继承Thread类与实现Runnable接口创建线程的区别</h1><h2 id="一、两种方式代码示例"><a href="#一、两种方式代码示例" class="headerlink" title="一、两种方式代码示例"></a>一、两种方式代码示例</h2><h3 id="1-继承Thread子类方式"><a href="#1-继承Thread子类方式" class="headerlink" title="1. 继承Thread子类方式"></a>1. 继承Thread子类方式</h3><pre><code class="language-java">// 1.自定义类继承Thread，重写run()
+class MyThread extends Thread{
+    @Override
+    public void run() {
+        // 线程执行任务
+        System.out.println(&quot;线程任务执行&quot;);
+    }
+}
+public class Test{
+    public static void main(String[] args) {
+        MyThread t = new MyThread();
+        t.start(); // 启动线程
+    }
+}
+// 1.实现Runnable接口，重写run()
+class MyRunnable implements Runnable{
+    @Override
+    public void run() {
+        System.out.println(&quot;Runnable线程任务&quot;);
+    }
+}
+public class Test{
+    public static void main(String[] args) {
+        MyRunnable run = new MyRunnable();
+        Thread t = new Thread(run);
+        t.start();
+    }
+}
+## 二、核心区别📌
+1. 继承限制不同
+继承 Thread：Java 是单继承，继承Thread后无法再继承其他父类，扩展性受限。
+实现 Runnable：接口多实现，实现Runnable后还能继承其他类，避免单继承局限。
+2. 资源共享能力
+继承 Thread：每个实例都是独立线程对象，无法天然共享成员变量；如需共享资源需要静态变量。
+实现 Runnable：多个Thread对象可以共用同一个Runnable实现类对象，天然共享任务资源，适合多线程售票、资源抢占场景。
+3. 任务与线程解耦
+Thread 继承：线程和任务绑定在同一个类中，耦合度高。
+Runnable：任务（Runnable）和线程（Thread）分离，任务可复用，一个任务可以交给多个线程执行。
+4. 适用场景
+Thread 子类：逻辑简单、不需要资源共享的独立线程。
+Runnable 接口：推荐首选，绝大多数开发场景，尤其是多线程共享资源、需要拓展父类的业务。
+三、总结
+开发中优先选择实现 Runnable 接口创建线程，规避单继承缺陷、方便资源共享，是项目标准写法。
+</code></pre>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2026/05/15/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB/" class="archive-article-date">
-  <time class="dt-published" datetime="2026-05-15T07:04:06.232Z" itemprop="datePublished">May 15</time>
-</a>
       
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2026/05/08/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/" class="archive-article-date">
-  <time class="dt-published" datetime="2026-05-07T16:00:00.000Z" itemprop="datePublished">May 8</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/06/07/%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="cuidMm0V8yauOkzF8LA7HnQ7I" data-title="Java两种创建线程方式：继承Thread类 VS 实现Runnable接口" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2026/05/08/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/">单一职责原则</a>
-    </h1>
-  
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2026/05/08/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/" class="archive-article-date">
-  <time class="dt-published" datetime="2026-05-07T16:00:00.000Z" itemprop="datePublished">May 8</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2026/05/08/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/">开闭原则</a>
-    </h1>
   
+    <a href="/2026/05/27/%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">文本文件复制、任意文件复制</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2026/05/05/%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  <time class="dt-published" datetime="2026-05-04T16:00:00.000Z" itemprop="datePublished">May 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2026/05/05/%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%96%B9%E6%B3%95/">形式化方法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2026/05/01/%E5%85%B3%E9%94%AE%E5%AD%97/" class="archive-article-date">
-  <time class="dt-published" datetime="2026-04-30T16:00:00.000Z" itemprop="datePublished">May 1</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2026/05/01/%E5%85%B3%E9%94%AE%E5%AD%97/">java常见关键字</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
 
 </section>
