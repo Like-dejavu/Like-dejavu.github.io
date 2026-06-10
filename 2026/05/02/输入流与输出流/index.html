@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Java输入流与输出流 | dejavu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一、核心定义与本质Java IO 流（Input&#x2F;Output Stream）是程序用于数据传输的抽象模型，本质是一组有序字节&#x2F;字符序列，充当程序与外部数据源（文件、网络、内存、控制台等）之间的数据通道。流采用单向读写设计，分为输入流和输出流两大体系，均位于 java.io 包下。 输入流（InputStream &#x2F; Reader）方向：外部数据源 → 程序，作用是读">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java输入流与输出流">
+<meta property="og:url" content="http://example.com/2026/05/02/%E8%BE%93%E5%85%A5%E6%B5%81%E4%B8%8E%E8%BE%93%E5%87%BA%E6%B5%81/index.html">
+<meta property="og:site_name" content="dejavu">
+<meta property="og:description" content="一、核心定义与本质Java IO 流（Input&#x2F;Output Stream）是程序用于数据传输的抽象模型，本质是一组有序字节&#x2F;字符序列，充当程序与外部数据源（文件、网络、内存、控制台等）之间的数据通道。流采用单向读写设计，分为输入流和输出流两大体系，均位于 java.io 包下。 输入流（InputStream &#x2F; Reader）方向：外部数据源 → 程序，作用是读">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-05-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-10T12:23:44.258Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="入门">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="dejavu" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">dejavu</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-输入流与输出流" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/05/02/%E8%BE%93%E5%85%A5%E6%B5%81%E4%B8%8E%E8%BE%93%E5%87%BA%E6%B5%81/" class="article-date">
+  <time class="dt-published" datetime="2026-05-01T16:00:00.000Z" itemprop="datePublished">2026-05-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Java输入流与输出流
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="一、核心定义与本质"><a href="#一、核心定义与本质" class="headerlink" title="一、核心定义与本质"></a>一、核心定义与本质</h2><p>Java IO 流（Input&#x2F;Output Stream）是程序用于数据传输的抽象模型，本质是一组有序字节&#x2F;字符序列，充当程序与外部数据源（文件、网络、内存、控制台等）之间的数据通道。流采用单向读写设计，分为输入流和输出流两大体系，均位于 <code>java.io</code> 包下。</p>
+<p><strong>输入流（InputStream &#x2F; Reader）</strong><br>方向：外部数据源 → 程序，作用是读取数据。<br>程序从流中获取数据，相当于“读入”，数据源包含文件、网络端口、数组、控制台等。</p>
+<p><strong>输出流（OutputStream &#x2F; Writer）</strong><br>方向：程序 → 外部数据源，作用是写出数据。<br>程序将数据写入流中并传输至目标位置，相当于“写出”。</p>
+<h2 id="二、两大分类维度（字节流-字符流）"><a href="#二、两大分类维度（字节流-字符流）" class="headerlink" title="二、两大分类维度（字节流 &amp; 字符流）"></a>二、两大分类维度（字节流 &amp; 字符流）</h2><p>按处理数据单位划分，流分为字节流和字符流，是 Java IO 的核心分类。</p>
+<h3 id="1-字节流（Byte-Stream）"><a href="#1-字节流（Byte-Stream）" class="headerlink" title="1. 字节流（Byte Stream）"></a>1. 字节流（Byte Stream）</h3><p>顶层抽象父类：</p>
+<ul>
+<li>输入：<code>java.io.InputStream</code></li>
+<li>输出：<code>java.io.OutputStream</code></li>
+</ul>
+<p>处理单位：单个字节（8bit），可处理所有类型数据，包括文本、图片、视频、音频、二进制文件等。<br>适用场景：通用文件传输、二进制数据读写、网络通信。</p>
+<h3 id="2-字符流（Character-Stream）"><a href="#2-字符流（Character-Stream）" class="headerlink" title="2. 字符流（Character Stream）"></a>2. 字符流（Character Stream）</h3><p>顶层抽象父类：</p>
+<ul>
+<li>输入：<code>java.io.Reader</code></li>
+<li>输出：<code>java.io.Writer</code></li>
+</ul>
+<p>处理单位：单个字符，底层依托字节流结合编码表（UTF-8&#x2F;GBK 等），自动完成字节与字符的转换。<br>适用场景：纯文本数据，如 txt 文件、Java 代码、配置文件，可有效避免乱码问题。</p>
+<p><strong>关键区别</strong>：字节流无缓冲区，字符流默认自带内置缓冲区；字符输出流必须手动调用 <code>flush()</code> 刷新或关闭流，数据才会真正写入目标位置。</p>
+<h2 id="三、按功能分层（节点流-处理流）"><a href="#三、按功能分层（节点流-处理流）" class="headerlink" title="三、按功能分层（节点流 &amp; 处理流）"></a>三、按功能分层（节点流 &amp; 处理流）</h2><p>Java IO 基于装饰器模式设计，流分为两层，支持嵌套组合使用。</p>
+<h3 id="节点流（基础流）"><a href="#节点流（基础流）" class="headerlink" title="节点流（基础流）"></a>节点流（基础流）</h3><p>直接对接数据源或数据目标，是数据传输的底层载体。常见类型有 <code>FileInputStream</code>、<code>FileReader</code>、<code>FileOutputStream</code>、<code>FileWriter</code>，负责完成原始数据的读写操作。</p>
+<h3 id="处理流（包装流-缓冲流）"><a href="#处理流（包装流-缓冲流）" class="headerlink" title="处理流（包装流 &#x2F; 缓冲流）"></a>处理流（包装流 &#x2F; 缓冲流）</h3><p>不直接对接数据源，以包装节点流的方式使用，提供扩展能力，例如缓冲加速、格式转换、对象序列化、按行读取等。<br>典型代表：<code>BufferedReader</code>、<code>BufferedInputStream</code> 实现缓冲提速；<code>PrintWriter</code> 用于格式化输出；<code>ObjectInputStream</code>、<code>ObjectOutputStream</code> 实现对象读写。</p>
+<h2 id="四、核心执行规则与流关闭"><a href="#四、核心执行规则与流关闭" class="headerlink" title="四、核心执行规则与流关闭"></a>四、核心执行规则与流关闭</h2><ol>
+<li><strong>流向不可逆</strong>：流实例一旦创建，读写方向固定，输入流仅可读取数据，输出流仅可写出数据。</li>
+<li><strong>执行顺序</strong>：创建流对象 → 读写数据 → 调用 <code>close()</code> 关闭流。<br>流属于操作系统资源，JVM 无法自动回收，必须手动关闭，否则会引发资源泄漏；关闭处理流时，会自动关闭其内部包装的节点流。</li>
+<li><strong>异常处理</strong>：IO 操作受检异常约束，必须捕获或抛出 <code>IOException</code>。</li>
+</ol>
+<h2 id="五、典型体系结构总结"><a href="#五、典型体系结构总结" class="headerlink" title="五、典型体系结构总结"></a>五、典型体系结构总结</h2><ul>
+<li>字节输入体系：<code>InputStream</code>（抽象类）→ 子类（文件流、缓冲流、对象字节输入流等）</li>
+<li>字节输出体系：<code>OutputStream</code>（抽象类）→ 子类（文件流、缓冲流、对象字节输出流等）</li>
+<li>字符输入体系：<code>Reader</code>（抽象类）→ 子类（文件流、缓冲字符输入流等）</li>
+<li>字符输出体系：<code>Writer</code>（抽象类）→ 子类（文件流、缓冲流、打印字符输出流等）</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/05/02/%E8%BE%93%E5%85%A5%E6%B5%81%E4%B8%8E%E8%BE%93%E5%87%BA%E6%B5%81/" data-id="cuidU6UZFT2gsRqf_Csa9RCD8" data-title="Java输入流与输出流" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2026/05/05/%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%96%B9%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          形式化方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2026/05/01/%E5%85%B3%E9%94%AE%E5%AD%97/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">java常见关键字</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/" rel="tag">代码示例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/" style="font-size: 10px;">代码示例</a> <a href="/tags/%E5%85%A5%E9%97%A8/" style="font-size: 20px;">入门</a> <a href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">后端开发</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/06/">June 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/05/">May 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">April 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/06/07/%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA%E7%9A%84%E5%8C%BA%E5%88%AB/">Java两种创建线程方式：继承Thread类 VS 实现Runnable接口</a>
+          </li>
+        
+          <li>
+            <a href="/2026/05/27/%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6/">文本文件复制、任意文件复制</a>
+          </li>
+        
+          <li>
+            <a href="/2026/05/18/%E6%95%B0%E7%BB%84/">数组</a>
+          </li>
+        
+          <li>
+            <a href="/2026/05/15/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/05/08/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/">单一职责原则</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -561,6 +561,81 @@ public void showChart() {
 
 
   
+    <article id="post-输入流与输出流" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/05/02/%E8%BE%93%E5%85%A5%E6%B5%81%E4%B8%8E%E8%BE%93%E5%87%BA%E6%B5%81/" class="article-date">
+  <time class="dt-published" datetime="2026-05-01T16:00:00.000Z" itemprop="datePublished">2026-05-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/05/02/%E8%BE%93%E5%85%A5%E6%B5%81%E4%B8%8E%E8%BE%93%E5%87%BA%E6%B5%81/">Java输入流与输出流</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="一、核心定义与本质"><a href="#一、核心定义与本质" class="headerlink" title="一、核心定义与本质"></a>一、核心定义与本质</h2><p>Java IO 流（Input&#x2F;Output Stream）是程序用于数据传输的抽象模型，本质是一组有序字节&#x2F;字符序列，充当程序与外部数据源（文件、网络、内存、控制台等）之间的数据通道。流采用单向读写设计，分为输入流和输出流两大体系，均位于 <code>java.io</code> 包下。</p>
+<p><strong>输入流（InputStream &#x2F; Reader）</strong><br>方向：外部数据源 → 程序，作用是读取数据。<br>程序从流中获取数据，相当于“读入”，数据源包含文件、网络端口、数组、控制台等。</p>
+<p><strong>输出流（OutputStream &#x2F; Writer）</strong><br>方向：程序 → 外部数据源，作用是写出数据。<br>程序将数据写入流中并传输至目标位置，相当于“写出”。</p>
+<h2 id="二、两大分类维度（字节流-字符流）"><a href="#二、两大分类维度（字节流-字符流）" class="headerlink" title="二、两大分类维度（字节流 &amp; 字符流）"></a>二、两大分类维度（字节流 &amp; 字符流）</h2><p>按处理数据单位划分，流分为字节流和字符流，是 Java IO 的核心分类。</p>
+<h3 id="1-字节流（Byte-Stream）"><a href="#1-字节流（Byte-Stream）" class="headerlink" title="1. 字节流（Byte Stream）"></a>1. 字节流（Byte Stream）</h3><p>顶层抽象父类：</p>
+<ul>
+<li>输入：<code>java.io.InputStream</code></li>
+<li>输出：<code>java.io.OutputStream</code></li>
+</ul>
+<p>处理单位：单个字节（8bit），可处理所有类型数据，包括文本、图片、视频、音频、二进制文件等。<br>适用场景：通用文件传输、二进制数据读写、网络通信。</p>
+<h3 id="2-字符流（Character-Stream）"><a href="#2-字符流（Character-Stream）" class="headerlink" title="2. 字符流（Character Stream）"></a>2. 字符流（Character Stream）</h3><p>顶层抽象父类：</p>
+<ul>
+<li>输入：<code>java.io.Reader</code></li>
+<li>输出：<code>java.io.Writer</code></li>
+</ul>
+<p>处理单位：单个字符，底层依托字节流结合编码表（UTF-8&#x2F;GBK 等），自动完成字节与字符的转换。<br>适用场景：纯文本数据，如 txt 文件、Java 代码、配置文件，可有效避免乱码问题。</p>
+<p><strong>关键区别</strong>：字节流无缓冲区，字符流默认自带内置缓冲区；字符输出流必须手动调用 <code>flush()</code> 刷新或关闭流，数据才会真正写入目标位置。</p>
+<h2 id="三、按功能分层（节点流-处理流）"><a href="#三、按功能分层（节点流-处理流）" class="headerlink" title="三、按功能分层（节点流 &amp; 处理流）"></a>三、按功能分层（节点流 &amp; 处理流）</h2><p>Java IO 基于装饰器模式设计，流分为两层，支持嵌套组合使用。</p>
+<h3 id="节点流（基础流）"><a href="#节点流（基础流）" class="headerlink" title="节点流（基础流）"></a>节点流（基础流）</h3><p>直接对接数据源或数据目标，是数据传输的底层载体。常见类型有 <code>FileInputStream</code>、<code>FileReader</code>、<code>FileOutputStream</code>、<code>FileWriter</code>，负责完成原始数据的读写操作。</p>
+<h3 id="处理流（包装流-缓冲流）"><a href="#处理流（包装流-缓冲流）" class="headerlink" title="处理流（包装流 &#x2F; 缓冲流）"></a>处理流（包装流 &#x2F; 缓冲流）</h3><p>不直接对接数据源，以包装节点流的方式使用，提供扩展能力，例如缓冲加速、格式转换、对象序列化、按行读取等。<br>典型代表：<code>BufferedReader</code>、<code>BufferedInputStream</code> 实现缓冲提速；<code>PrintWriter</code> 用于格式化输出；<code>ObjectInputStream</code>、<code>ObjectOutputStream</code> 实现对象读写。</p>
+<h2 id="四、核心执行规则与流关闭"><a href="#四、核心执行规则与流关闭" class="headerlink" title="四、核心执行规则与流关闭"></a>四、核心执行规则与流关闭</h2><ol>
+<li><strong>流向不可逆</strong>：流实例一旦创建，读写方向固定，输入流仅可读取数据，输出流仅可写出数据。</li>
+<li><strong>执行顺序</strong>：创建流对象 → 读写数据 → 调用 <code>close()</code> 关闭流。<br>流属于操作系统资源，JVM 无法自动回收，必须手动关闭，否则会引发资源泄漏；关闭处理流时，会自动关闭其内部包装的节点流。</li>
+<li><strong>异常处理</strong>：IO 操作受检异常约束，必须捕获或抛出 <code>IOException</code>。</li>
+</ol>
+<h2 id="五、典型体系结构总结"><a href="#五、典型体系结构总结" class="headerlink" title="五、典型体系结构总结"></a>五、典型体系结构总结</h2><ul>
+<li>字节输入体系：<code>InputStream</code>（抽象类）→ 子类（文件流、缓冲流、对象字节输入流等）</li>
+<li>字节输出体系：<code>OutputStream</code>（抽象类）→ 子类（文件流、缓冲流、对象字节输出流等）</li>
+<li>字符输入体系：<code>Reader</code>（抽象类）→ 子类（文件流、缓冲字符输入流等）</li>
+<li>字符输出体系：<code>Writer</code>（抽象类）→ 子类（文件流、缓冲流、打印字符输出流等）</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/05/02/%E8%BE%93%E5%85%A5%E6%B5%81%E4%B8%8E%E8%BE%93%E5%87%BA%E6%B5%81/" data-id="cuidU6UZFT2gsRqf_Csa9RCD8" data-title="Java输入流与输出流" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-关键字" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2026/05/01/%E5%85%B3%E9%94%AE%E5%AD%97/" class="article-date">
@@ -670,67 +745,6 @@ public void showChart() {
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-显示当前时间" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/04/15/%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/" class="article-date">
-  <time class="dt-published" datetime="2026-04-15T07:00:00.000Z" itemprop="datePublished">2026-04-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/04/15/%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/">Java 格式化当前系统时间</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>在 Java 开发中，我们经常需要获取当前系统时间，并按照指定格式（如 <code>yyyy-MM-dd HH:mm:ss</code>）进行格式化输出。下面是一个完整、可直接在 IDEA 中运行的示例代码，同时附上详细说明。</p>
-<h2 id="完整可运行代码"><a href="#完整可运行代码" class="headerlink" title="完整可运行代码"></a>完整可运行代码</h2><pre><code class="language-java">import java.text.SimpleDateFormat;
-import java.util.Date;
-
-public class Main {
-    public static void main(String[] args) {
-        // 1. 创建SimpleDateFormat格式化对象
-        SimpleDateFormat sdf = new SimpleDateFormat();
-        // 2. 设置自定义时间格式：yyyy-MM-dd HH:mm:ss a（a代表上午/下午）
-        sdf.applyPattern(&quot;yyyy-MM-dd HH:mm:ss a&quot;);
-        // 3. 获取当前系统时间
-        Date date = new Date();
-        // 4. 格式化并输出时间
-        System.out.println(&quot;现在时间：&quot; + sdf.format(date));
-    }
-}
-</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/15/%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/" data-id="cuid7yRUJOlMmiYV578W_8fMo" data-title="Java 格式化当前系统时间" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/" rel="tag">代码示例</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">后端开发</a></li></ul>
 
     </footer>
   </div>
