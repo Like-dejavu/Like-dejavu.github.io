@@ -71,6 +71,185 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-开闭原则" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/05/08/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/" class="article-date">
+  <time class="dt-published" datetime="2026-05-07T16:00:00.000Z" itemprop="datePublished">2026-05-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/05/08/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/">开闭原则</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>开闭原则（Open&#x2F;Closed Principle，OCP）：对扩展开放（Open for extension）当需要新增功能时，我们应该可以通过 ** 新增代码（比如新建类、新增实现）** 来完成，而不是修改已有的代码。系统要设计得具备足够的灵活性，能轻松支持功能的扩展。<br>对修改关闭（Closed for modification）已经稳定运行、经过测试的代码，应尽量避免直接修改其源码。因为修改旧代码很容易引入新的 Bug，影响原本正常的功能。</p>
+<p>&#x2F;&#x2F; 饼图类<br>class PieChart {<br>    public void display() {<br>        System.out.println(“绘制饼图”);<br>    }<br>}</p>
+<p>&#x2F;&#x2F; 柱状图类<br>class BarChart {<br>    public void display() {<br>        System.out.println(“绘制柱状图”);<br>    }<br>}</p>
+<p>&#x2F;&#x2F; 图表展示类（核心类）<br>class ChartDisplay {<br>    &#x2F;&#x2F; 根据类型展示图表<br>    public void showChart(String type) {<br>        if (“pie”.equals(type)) {<br>            PieChart pieChart &#x3D; new PieChart();<br>            pieChart.display();<br>        } else if (“bar”.equals(type)) {<br>            BarChart barChart &#x3D; new BarChart();<br>            barChart.display();<br>        }<br>        &#x2F;&#x2F; 新增图表类型，必须在这里添加else-if分支<br>    }<br>}<br>原始设计缺陷<br>违反开闭原则：新增折线图、散点图等图表类型时，必须修改ChartDisplay类的showChart方法，添加新的if-else分支，破坏了原有代码逻辑。<br>耦合度极高：ChartDisplay直接依赖具体的图表实现类，高层模块与底层实现紧密绑定，代码灵活性极差。<br>扩展性差：每一次扩展都需要改动核心代码，增加测试和维护成本，还容易引发连锁 BUG。<br>代码冗余：多个图表类重复定义display方法，缺乏统一规范。<br>二、三步重构：遵循开闭原则优化系统<br>针对上述问题，我们基于开闭原则，通过抽象化 + 多态的思路重构代码，核心思路是：依赖抽象，不依赖具体实现，将系统分为抽象层和实现层，实现扩展与修改分离。<br>第一步：定义抽象图表父类<br>抽取所有图表的公共行为（展示图表），定义抽象图表类或接口，统一图表的行为规范，让所有具体图表都遵循该契约。<br>java<br>运行<br>&#x2F;&#x2F; 抽象图表类（抽象层）<br>abstract class Chart {<br>    &#x2F;&#x2F; 抽象展示方法，所有子类必须实现<br>    public abstract void display();<br>}<br>第二步：具体图表类继承抽象类<br>让饼图、柱状图等具体图表类，继承抽象图表父类，实现各自的display方法。此时具体图表只关注自身的实现逻辑，与核心展示类解耦。<br>java<br>运行<br>&#x2F;&#x2F; 饼图（具体实现类）<br>class PieChart extends Chart {<br>    @Override<br>    public void display() {<br>        System.out.println(“绘制饼图”);<br>    }<br>}</p>
+<p>&#x2F;&#x2F; 柱状图（具体实现类）<br>class BarChart extends Chart {<br>    @Override<br>    public void display() {<br>        System.out.println(“绘制柱状图”);<br>    }<br>}<br>第三步：重构 ChartDisplay，依赖抽象<br>改造核心的ChartDisplay类，不再依赖具体的图表实现类，而是依赖抽象的 Chart 父类，通过多态调用图表展示方法，彻底移除if-else判断逻辑。<br>java<br>运行<br>&#x2F;&#x2F; 重构后的图表展示类（核心类）<br>class ChartDisplay {<br>    &#x2F;&#x2F; 依赖抽象Chart，而非具体图表类<br>    private Chart chart;</p>
+<pre><code>// 注入具体图表对象
+public void setChart(Chart chart) {
+    this.chart = chart;
+}
+
+// 统一展示方法
+public void showChart() {
+    // 多态调用，无需关心具体图表类型
+    chart.display();
+}
+</code></pre>
+<p>}<br>三、扩展示例：轻松新增折线图<br>遵循开闭原则重构后，新增图表类型时，无需修改任何原有代码，只需要新建一个图表子类，继承抽象Chart类并实现display方法即可，完全实现无侵入式扩展。<br>java<br>运行<br>&#x2F;&#x2F; 新增折线图（无需修改原有代码）<br>class LineChart extends Chart {<br>    @Override<br>    public void display() {<br>        System.out.println(“绘制折线图”);<br>    }<br>}<br>客户端调用<br>java<br>运行<br>public class Client {<br>    public static void main(String[] args) {<br>        ChartDisplay chartDisplay &#x3D; new ChartDisplay();</p>
+<pre><code>    // 展示饼图
+    chartDisplay.setChart(new PieChart());
+    chartDisplay.showChart();
+
+    // 展示柱状图
+    chartDisplay.setChart(new BarChart());
+    chartDisplay.showChart();
+
+    // 展示新增的折线图
+    chartDisplay.setChart(new LineChart());
+    chartDisplay.showChart();
+}
+</code></pre>
+<p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/05/08/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/" data-id="cuidL1Vv-1m7xcD5gZZSQC_E9" data-title="开闭原则" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-形式化方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/05/05/%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2026-05-04T16:00:00.000Z" itemprop="datePublished">2026-05-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/05/05/%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%96%B9%E6%B3%95/">形式化方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>面向对象程序设计的形式化方式，指的是用严格的数学语言和逻辑系统来定义 OOP 的语法、语义、类型规则，从而能够对程序行为进行推理和证明。这通常是一些极简的「核心演算」或逻辑框架，旨在抓住封装、继承、多态、动态分发等本质特性。</p>
+<p>常见的几种形式化路径有：</p>
+<ol>
+<li><p>对象演算（Object Calculus）<br>最经典的是 Abadi 与 Cardelli 的 ς‑演算 (Sigma Calculus)。它不把对象归约为函数，而是把对象本身作为原始计算实体，包含方法和字段。操作只有方法调用、方法覆写等。通过这种极小语言，能严格刻画子类型、继承、自我引用（self）以及方法调用的动态分发。</p>
+</li>
+<li><p>Featherweight Java（轻量级 Java）<br>Igarashi、Pierce、Wadler 提出的FJ，是去除了赋值等复杂特性的极小类 Java 语言。它完整保留了类、继承、方法重写、类型转换等核心，并给出操作语义与类型安全证明。因为足够小，FJ 成为研究泛型、混入（Mixin）等 OOP 扩展的标准载体。</p>
+</li>
+<li><p>基于记录与递归类型的 λ‑演算<br>将对象建模为 记录(Record) + 闭包。记录存储字段和方法，方法通过递归类型带上 self 参数实现自引用和动态分发。这样做的好处是可以直接嵌入已有的函数式&#x2F;类型论框架，但不把对象视为第一性原语。</p>
+</li>
+<li><p>共代数语义（Coalgebraic Semantics）<br>以共代数的方法对对象进行建模：把对象看成具有内部状态、可响应消息的「观察性行为」，类的继承被解释为共代数之间的态射。这种方式特别适合描述交互式、状态不断演化的对象系统。</p>
+</li>
+<li><p>ADT 与对象的对立形式化<br>William Cook 著名的分析指出：抽象数据类型（ADT）通过固定实现类型来隐藏细节，而对象则是通过自认知的动态分发实现数据抽象。这在形式化中体现为：对象的行为必须依赖一个绑定了具体方法的 self，无法简单用存在类型（∃）等同，这催生了一系列用自引用记录、F‑有界多态等方式刻画对象的研究。</p>
+</li>
+<li><p>面向验证的规约语言<br>如果形式化的目标是做正确性证明，常用的方式还包括 分离逻辑（处理对象引用与堆的别名问题）以及 JML、Spec# 等契约式规约语言。它们为 Java&#x2F;C# 中的类和方法附加前后置条件、不变式，配合定理证明器或模型检验来验证实现</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/05/05/%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%96%B9%E6%B3%95/" data-id="cuidA3U55LMhf16dBeM6R4xxP" data-title="形式化方法" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-关键字" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/05/01/%E5%85%B3%E9%94%AE%E5%AD%97/" class="article-date">
+  <time class="dt-published" datetime="2026-04-30T16:00:00.000Z" itemprop="datePublished">2026-05-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/05/01/%E5%85%B3%E9%94%AE%E5%AD%97/">java常见关键字</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>关键字	   含义<br>abstract	声明抽象类或抽象方法<br>assert	断言（JDK 1.4 引入）<br>boolean	布尔类型<br>break	跳出循环或 switch 语句<br>byte	8 位有符号整数类型<br>case	switch 语句中的分支<br>catch	捕获异常<br>char	16 位 Unicode 字符类型<br>class	声明类<br>const	保留字，未使用（Java 中无此功能）<br>continue	跳过当前循环剩余部分，继续下一次迭代<br>default	switch 中的默认分支；或接口的默认方法<br>do	do-while 循环的开始<br>double	双精度浮点数类型<br>else	if 条件分支的否定分支<br>enum	声明枚举类型（JDK 5 引入）<br>extends	继承类或接口<br>final	常量、不可继承类、不可重写方法<br>finally	异常处理中总会执行的代码块<br>float	单精度浮点数类型<br>for	循环结构<br>goto	保留字，未使用<br>if	条件判断<br>implements	实现接口<br>import	导入类或包<br>instanceof	判断对象是否为某类型实例<br>int	32 位有符号整数类型<br>interface	声明接口<br>long	64 位有符号整数类型<br>native	声明本地方法（用其他语言实现）<br>new	创建对象实例<br>package	定义包<br>private	私有访问修饰符<br>protected	受保护访问修饰符<br>public	公有访问修饰符<br>return	方法返回值<br>short	16 位有符号整数类型<br>static	静态成员（类级别）<br>strictfp	严格浮点计算（JDK 1.2 引入）<br>super	父类引用<br>switch	多分支选择结构<br>synchronized	同步锁<br>this	当前对象引用<br>throw	手动抛出异常<br>throws	声明方法可能抛出的异常<br>transient	序列化时忽略字段<br>try	开始异常捕获或资源管理块<br>void	表示无返回值<br>volatile	保证变量可见性和有序性<br>while	循环结构</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/05/01/%E5%85%B3%E9%94%AE%E5%AD%97/" data-id="cuidoSNi6IoqfgisegCEJDw7n" data-title="java常见关键字" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-类与对象" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2026/04/24/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" class="article-date">
@@ -145,8 +324,8 @@
   
     <article id="post-显示当前时间" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2026/04/17/%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/" class="article-date">
-  <time class="dt-published" datetime="2026-04-17T07:00:00.000Z" itemprop="datePublished">2026-04-17</time>
+    <a href="/2026/04/19/%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/" class="article-date">
+  <time class="dt-published" datetime="2026-04-19T07:00:00.000Z" itemprop="datePublished">2026-04-19</time>
 </a>
     
   <div class="article-category">
@@ -161,7 +340,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/04/17/%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/">Java 格式化当前系统时间</a>
+      <a class="p-name article-title" href="/2026/04/19/%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/">Java 格式化当前系统时间</a>
     </h1>
   
 
@@ -190,7 +369,7 @@ public class Main {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/17/%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/" data-id="cuidm_-65LeUHjBqbFiJjJips" data-title="Java 格式化当前系统时间" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/19/%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/" data-id="cuidm_-65LeUHjBqbFiJjJips" data-title="Java 格式化当前系统时间" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -436,23 +615,23 @@ public class Main {
       <ul>
         
           <li>
+            <a href="/2026/06/17/java%20Swing/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/06/17/%E5%B8%B8%E8%A7%81%E5%AE%9E%E7%94%A8%E7%B1%BB/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/06/17/%E7%BB%A7%E6%89%BF%E4%B8%8E%E6%8E%A5%E5%8F%A3/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2026/06/07/%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA%E7%9A%84%E5%8C%BA%E5%88%AB/">Java两种创建线程方式：继承Thread类 VS 实现Runnable接口</a>
           </li>
         
           <li>
             <a href="/2026/06/02/%E8%BE%93%E5%85%A5%E6%B5%81%E4%B8%8E%E8%BE%93%E5%87%BA%E6%B5%81/">Java输入流与输出流</a>
-          </li>
-        
-          <li>
-            <a href="/2026/05/27/%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6/">文本文件复制、任意文件复制</a>
-          </li>
-        
-          <li>
-            <a href="/2026/05/18/%E6%95%B0%E7%BB%84/">数组</a>
-          </li>
-        
-          <li>
-            <a href="/2026/05/15/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB/">(no title)</a>
           </li>
         
       </ul>

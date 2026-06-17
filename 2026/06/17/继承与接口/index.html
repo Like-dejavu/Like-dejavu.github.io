@@ -6,15 +6,15 @@
   
   <title>dejavu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="title:反射机制，匿名内部类date:2026-05-12categories:Java一、Java 反射机制Java 反射机制是指程序在运行时，能够动态获取任意类的信息，并操作其成员（构造方法、字段、方法）的能力。它打破了编译期的静态限制，让程序具备极强的灵活性，是框架开发（如 Spring）的核心底层能力之一。反射的本质是通过 JVM 提供的 java.lang.reflect 包 AP">
+  <meta name="description" content="markdowntitle: 继承与接口date: 2026-05-23categories: Javatags: Java入门一、继承 extends1. 继承概念&#x2F;&#x2F; 继承：子类复用父类代码，实现代码复用，属于类与类的关系 &#x2F;&#x2F; 语法：子类 extends 父类 class 子类 extends 父类 {  } 2. 继承特点 java 运行 &#x2F;&#x2F; 1. Java只支持单继承，一个类只能直接继">
 <meta property="og:type" content="article">
 <meta property="og:title" content="dejavu">
-<meta property="og:url" content="http://example.com/2026/05/15/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB/index.html">
+<meta property="og:url" content="http://example.com/2026/06/17/%E7%BB%A7%E6%89%BF%E4%B8%8E%E6%8E%A5%E5%8F%A3/index.html">
 <meta property="og:site_name" content="dejavu">
-<meta property="og:description" content="title:反射机制，匿名内部类date:2026-05-12categories:Java一、Java 反射机制Java 反射机制是指程序在运行时，能够动态获取任意类的信息，并操作其成员（构造方法、字段、方法）的能力。它打破了编译期的静态限制，让程序具备极强的灵活性，是框架开发（如 Spring）的核心底层能力之一。反射的本质是通过 JVM 提供的 java.lang.reflect 包 AP">
+<meta property="og:description" content="markdowntitle: 继承与接口date: 2026-05-23categories: Javatags: Java入门一、继承 extends1. 继承概念&#x2F;&#x2F; 继承：子类复用父类代码，实现代码复用，属于类与类的关系 &#x2F;&#x2F; 语法：子类 extends 父类 class 子类 extends 父类 {  } 2. 继承特点 java 运行 &#x2F;&#x2F; 1. Java只支持单继承，一个类只能直接继">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2026-05-15T07:04:06.232Z">
-<meta property="article:modified_time" content="2026-05-15T07:14:54.851Z">
+<meta property="article:published_time" content="2026-06-17T12:59:52.608Z">
+<meta property="article:modified_time" content="2026-06-17T13:01:16.017Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -73,10 +73,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-反射机制，匿名内部类" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-继承与接口" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2026/05/15/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB/" class="article-date">
-  <time class="dt-published" datetime="2026-05-15T07:04:06.232Z" itemprop="datePublished">2026-05-15</time>
+    <a href="/2026/06/17/%E7%BB%A7%E6%89%BF%E4%B8%8E%E6%8E%A5%E5%8F%A3/" class="article-date">
+  <time class="dt-published" datetime="2026-06-17T12:59:52.608Z" itemprop="datePublished">2026-06-17</time>
 </a>
     
   </div>
@@ -85,14 +85,123 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <hr>
-<h2 id="title-反射机制，匿名内部类date-2026-05-12categories-Java"><a href="#title-反射机制，匿名内部类date-2026-05-12categories-Java" class="headerlink" title="title:反射机制，匿名内部类date:2026-05-12categories:Java"></a>title:反射机制，匿名内部类<br>date:2026-05-12<br>categories:Java</h2><p>一、Java 反射机制<br>Java 反射机制是指程序在运行时，能够动态获取任意类的信息，并操作其成员（构造方法、字段、方法）的能力。它打破了编译期的静态限制，让程序具备极强的灵活性，是框架开发（如 Spring）的核心底层能力之一。<br>反射的本质是通过 JVM 提供的 java.lang.reflect 包 API，访问方法区中存储的 Class 对象，进而操作类的实例。核心流程如下：<br>获取目标类的 Class 对象（反射的入口）<br>通过 Class 对象获取类的构造器、方法、字段等元数据<br>使用构造器创建对象，或调用方法、修改字段值<br>优缺点<br>优点：动态扩展、框架支撑、突破封装限制<br>缺点：性能损耗、破坏封装、可读性差<br>典型场景<br>Spring 依赖注入、ORM 映射、动态代理、插件化开发<br>简单示例<br>java<br>运行<br>Class&lt;?&gt; clazz &#x3D; Class.forName(“com.example.User”);<br>Object user &#x3D; clazz.getDeclaredConstructor().newInstance();<br>Method setName &#x3D; clazz.getDeclaredMethod(“setName”, String.class);<br>setName.invoke(user, “张三”);<br>二、匿名内部类<br>匿名内部类是无名称的局部内部类，用于一次性实现接口 &#x2F; 继承父类，简化代码。<br>核心要点<br>语法<br>java<br>运行<br>&#x2F;&#x2F; 实现接口<br>Runnable runnable &#x3D; new Runnable() {<br>    @Override<br>    public void run() { &#x2F;* 任务逻辑 *&#x2F; }<br>};<br>应用场景<br>方法执行耗时统计<br>GUI 事件监听<br>线程任务快速实现<br>特点<br>仅用一次、编译生成 外部类$1.class、可访问外部成员（含方法内 final 变量）<br>耗时统计示例<br>java<br>运行<br>public static void countTime(Runnable task) {<br>    long start &#x3D; System.currentTimeMillis();<br>    task.run();<br>    System.out.println(“耗时：” + (System.currentTimeMillis() - start) + “ms”);<br>}</p>
-<p>&#x2F;&#x2F; 调用<br>countTime(new Runnable() {<br>    @Override<br>    public void run() {<br>        &#x2F;&#x2F; 业务逻辑<br>    }<br>});<br>总结<br>反射是 Java 动态编程的基石，匿名内部类是简化一次性实现的工具</p>
+        <h2 id="markdown"><a href="#markdown" class="headerlink" title="markdown"></a>markdown</h2><h2 id="title-继承与接口date-2026-05-23categories-Javatags-Java入门"><a href="#title-继承与接口date-2026-05-23categories-Javatags-Java入门" class="headerlink" title="title: 继承与接口date: 2026-05-23categories: Javatags: Java入门"></a>title: 继承与接口<br>date: 2026-05-23<br>categories: Java<br>tags: Java入门</h2><h1 id="一、继承-extends"><a href="#一、继承-extends" class="headerlink" title="一、继承 extends"></a>一、继承 extends</h1><h2 id="1-继承概念"><a href="#1-继承概念" class="headerlink" title="1. 继承概念"></a>1. 继承概念</h2><pre><code class="language-java">// 继承：子类复用父类代码，实现代码复用，属于类与类的关系
+// 语法：子类 extends 父类
+class 子类 extends 父类 {
+
+}
+2. 继承特点
+java
+运行
+// 1. Java只支持单继承，一个类只能直接继承一个父类
+// 2. 支持多层继承：A extends B，B extends C
+// 3. 子类可以继承父类非private成员变量、成员方法
+// 4. private私有资源子类无法直接访问，需通过get/set调用
+// 5. 所有类直接/间接继承Object类，Object是顶层父类
+3. super 关键字
+java
+运行
+// super代表父类对象
+// 1. super.成员变量：访问父类同名成员变量
+// 2. super.方法()：调用父类重写前的方法
+// 3. super()：调用父类构造方法，必须放在子类构造第一行
+4. 方法重写 Override
+java
+运行
+// 子类重写父类方法，重写规则：
+// 1. 方法名、参数列表、返回值与父类保持一致
+// 2. 访问权限不能比父类更严格
+// 3. 不能抛出父类没有的更大异常
+// 4. 静态方法不能重写，只会隐藏父类静态方法
+class Father{
+    public void show(){
+        System.out.println(&quot;父类方法&quot;);
+    }
+}
+class Son extends Father{
+    @Override
+    public void show(){
+        System.out.println(&quot;子类重写方法&quot;);
+    }
+}
+5. final 与继承
+java
+运行
+// final修饰类：该类不能被继承
+// final修饰方法：子类不能重写此方法
+// final修饰变量：值不可修改
+final class Person{}
+二、接口 interface
+1. 接口定义语法
+java
+运行
+// 接口是行为规范，定义方法标准，不关心实现
+interface 接口名 {
+    // JDK7及之前：只能公共抽象方法
+    public abstract void test();
+    // JDK8：默认方法default、静态方法static
+    default void demo(){}
+    static void staticDemo(){}
+    // JDK9：私有方法private
+    private void privateDemo(){}
+    // 成员变量默认 public static final 常量，必须初始化
+    int MAX = 100;
+}
+2. 类实现接口 implements
+java
+运行
+// 一个类可以实现多个接口，逗号分隔
+class 类名 implements 接口1,接口2 {
+    // 必须重写接口中所有抽象方法
+}
+interface Play{
+    void game();
+}
+interface Study{
+    void read();
+}
+class Student implements Play,Study{
+    @Override
+    public void game() {}
+    @Override
+    public void read() {}
+}
+3. 接口多继承
+java
+运行
+// 接口支持多继承，使用extends，逗号分隔多个父接口
+interface A{}
+interface B{}
+interface C extends A,B{}
+4. 接口核心特性
+java
+运行
+// 1. 接口不能实例化，无构造方法
+// 2. 成员变量默认常量 public static final
+// 3. 抽象方法默认 public abstract
+// 4. 类单继承、多实现；接口多继承
+// 5. 弥补Java单继承局限，实现多规范定义
+三、继承 vs 接口 核心区别
+java
+运行
+// 1. 关键字：继承extends、实现implements
+// 2. 数量：类只能单继承；类可多实现接口
+// 3. 构造方法：父类有构造；接口无构造
+// 4. 成员变量：父类普通变量；接口全是常量
+// 5. 方法：普通/静态/final方法；抽象/default/static/private
+// 6. 关系：is-a 属于；can-do 具备某种能力
+// 7. 权限：可私有成员；接口所有抽象方法public
+四、使用场景
+java
+运行
+// 继承：多个类存在公共属性、公共行为，抽取父类复用
+// 接口：定义统一行为标准，不同类实现不同逻辑，多能力扩展
+</code></pre>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/05/15/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB/" data-id="cuidiO5qMmXIdDGZHzcoZJft6" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/06/17/%E7%BB%A7%E6%89%BF%E4%B8%8E%E6%8E%A5%E5%8F%A3/" data-id="cuidgPWdsDtfdq6lwbwICZZ1E" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -102,19 +211,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2026/05/18/%E6%95%B0%E7%BB%84/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2026/06/17/%E5%B8%B8%E8%A7%81%E5%AE%9E%E7%94%A8%E7%B1%BB/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          数组
+          (no title)
         
       </div>
     </a>
   
   
-    <a href="/2026/05/13/%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%E4%B8%8E%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2026/06/07/%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA%E7%9A%84%E5%8C%BA%E5%88%AB/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">循环语句与条件分支语句</div>
+      <div class="article-nav-title">Java两种创建线程方式：继承Thread类 VS 实现Runnable接口</div>
     </a>
   
 </nav>

@@ -71,6 +71,505 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java Swing" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/06/17/java%20Swing/" class="article-date">
+  <time class="dt-published" datetime="2026-06-17T13:05:59.585Z" itemprop="datePublished">2026-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="markdown"><a href="#markdown" class="headerlink" title="markdown"></a>markdown</h2><h2 id="title-Java-Swing-图形界面入门date-2026-06-15categories-Javatags-Java入门-Swing"><a href="#title-Java-Swing-图形界面入门date-2026-06-15categories-Javatags-Java入门-Swing" class="headerlink" title="title: Java Swing 图形界面入门date: 2026-06-15categories: Javatags: Java入门,Swing"></a>title: Java Swing 图形界面入门<br>date: 2026-06-15<br>categories: Java<br>tags: Java入门,Swing</h2><h1 id="一、Swing-基础概念"><a href="#一、Swing-基础概念" class="headerlink" title="一、Swing 基础概念"></a>一、Swing 基础概念</h1><pre><code class="language-java">// Swing 是Java图形界面工具包，用于开发桌面窗口程序
+// 全部组件位于 javax.swing 包
+// 优点：跨平台、组件丰富、轻量级组件，不依赖本地系统控件
+// 顶层容器：JFrame(主窗口)、JDialog(弹窗)、JApplet(网页小程序，淘汰)
+1. 核心顶层容器 JFrame
+java
+运行
+import javax.swing.*;
+
+public class TestFrame {
+    public static void main(String[] args) {
+        // 创建主窗口对象
+        JFrame frame = new JFrame(&quot;我的窗口&quot;);
+
+        // 窗口基础设置
+        frame.setSize(400,300);        // 设置宽高
+        frame.setLocationRelativeTo(null); // 窗口居中
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 关闭窗口退出程序
+        frame.setVisible(true);        // 显示窗口
+    }
+}
+java
+运行
+// 常用关闭参数
+// EXIT_ON_CLOSE：关闭窗口直接退出程序
+// HIDE_ON_CLOSE：仅隐藏窗口，程序后台运行
+// DISPOSE_ON_CLOSE：销毁窗口资源
+二、常用基础组件
+1. 标签 JLabel（展示文字 / 图片）
+java
+运行
+JLabel label = new JLabel(&quot;这是文本标签&quot;);
+label.setText(&quot;修改文字&quot;);
+label.setHorizontalAlignment(JLabel.CENTER); // 文字居中
+2. 按钮 JButton（点击触发事件）
+java
+运行
+JButton btn = new JButton(&quot;点击按钮&quot;);
+3. 单行输入框 JTextField
+java
+运行
+JTextField input = new JTextField(20); // 20列宽度
+input.setText(&quot;默认文字&quot;);
+String text = input.getText(); // 获取输入内容
+4. 密码框 JPasswordField
+java
+5. 文本域 JTextArea（多行文本）
+java
+运行
+JTextArea area = new JTextArea(5,20);
+area.setLineWrap(true); // 自动换行
+6. 复选框 JCheckBox
+java
+运行
+JCheckBox cb = new JCheckBox(&quot;同意协议&quot;);
+cb.isSelected(); // 判断是否勾选
+7. 单选按钮 JRadioButton
+java
+运行
+JRadioButton r1 = new JRadioButton(&quot;男&quot;);
+JRadioButton r2 = new JRadioButton(&quot;女&quot;);
+// 按钮组实现单选互斥
+ButtonGroup group = new ButtonGroup();
+group.add(r1);
+group.add(r2);
+8. 下拉框 JComboBox
+java
+运行
+String[] arr = {&quot;苹果&quot;,&quot;香蕉&quot;,&quot;橙子&quot;};
+JComboBox&lt;String&gt; box = new JComboBox&lt;&gt;(arr);
+String select = (String)box.getSelectedItem();
+三、面板 JPanel（承载组件的容器）
+窗口不能直接放组件，必须通过 JPanel 中转
+java
+运行
+JPanel panel = new JPanel();
+panel.setLayout(null); // 关闭默认流式布局，使用绝对坐标
+
+// 设置组件坐标与大小
+JLabel l = new JLabel(&quot;测试&quot;);
+l.setBounds(50,50,100,30);
+panel.add(l); // 组件添加到面板
+
+frame.add(panel); // 面板添加到窗口
+四、三种常用布局管理器
+java
+运行
+// 1. FlowLayout 流式布局（JPanel默认）
+// 组件从左到右自动排列，自动换行
+panel.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+// 2. BorderLayout 边界布局（JFrame默认）
+// 分为东、南、西、北、中五个区域
+frame.add(btn, BorderLayout.NORTH);
+
+// 3. null 绝对布局，手动设置bounds坐标
+panel.setLayout(null);
+五、按钮点击事件（ActionListener）
+java
+运行
+JFrame frame = new JFrame(&quot;事件&quot;);
+frame.setSize(300,200);
+frame.setLocationRelativeTo(null);
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+JPanel panel = new JPanel();
+JButton btn = new JButton(&quot;点我弹窗&quot;);
+
+// 绑定点击监听
+btn.addActionListener(e -&gt; {
+    // 弹出提示框
+    JOptionPane.showMessageDialog(frame,&quot;按钮被点击了&quot;);
+});
+
+panel.add(btn);
+frame.add(panel);
+frame.setVisible(true);
+六、弹窗工具 JOptionPane
+java
+运行
+// 信息提示框
+JOptionPane.showMessageDialog(frame,&quot;提示文本&quot;);
+
+// 确认弹窗（是/否）
+int res = JOptionPane.showConfirmDialog(frame,&quot;是否确认？&quot;);
+
+// 输入弹窗
+String name = JOptionPane.showInputDialog(frame,&quot;请输入姓名&quot;);
+七、完整简易登录窗口示例
+java
+运行
+import javax.swing.*;
+
+public class LoginDemo {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame(&quot;登录界面&quot;);
+        frame.setSize(320,220);
+        frame.setLayout(null);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // 账号
+        JLabel userLab = new JLabel(&quot;账号：&quot;);
+        userLab.setBounds(60,40,60,25);
+        JTextField userInput = new JTextField();
+        userInput.setBounds(120,40,120,25);
+
+        // 密码
+        JLabel pwdLab = new JLabel(&quot;密码：&quot;);
+        pwdLab.setBounds(60,80,60,25);
+        JPasswordField pwdInput = new JPasswordField();
+        pwdInput.setBounds(120,80,120,25);
+
+        // 登录按钮
+        JButton loginBtn = new JButton(&quot;登录&quot;);
+        loginBtn.setBounds(100,130,100,30);
+        loginBtn.addActionListener(e-&gt;{
+            String user = userInput.getText();
+            String pwd = new String(pwdInput.getPassword());
+            if(&quot;admin&quot;.equals(user) &amp;&amp; &quot;123456&quot;.equals(pwd)){
+                JOptionPane.showMessageDialog(frame,&quot;登录成功&quot;);
+            }else{
+                JOptionPane.showMessageDialog(frame,&quot;账号或密码错误&quot;);
+            }
+        });
+
+        // 全部组件添加到窗口
+        frame.add(userLab);
+        frame.add(userInput);
+        frame.add(pwdLab);
+        frame.add(pwdInput);
+        frame.add(loginBtn);
+
+        frame.setVisible(true);
+    }
+}
+八、核心易错点
+java
+运行
+// 1. 组件必须先add到面板/窗口，否则界面不显示
+// 2. 使用绝对布局(null)时，必须调用setBounds设置坐标宽高
+// 3. 窗口设置完所有组件后，最后执行setVisible(true)
+// 4. Swing组件线程不安全，复杂程序推荐SwingUtilities.invokeLater
+// 5. JPasswordField获取密码不能直接toString，要用new String(getPassword())
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/06/17/java%20Swing/" data-id="cuidul83zqgItN8CJz_wKsXKa" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-常见实用类" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/06/17/%E5%B8%B8%E8%A7%81%E5%AE%9E%E7%94%A8%E7%B1%BB/" class="article-date">
+  <time class="dt-published" datetime="2026-06-17T13:03:34.416Z" itemprop="datePublished">2026-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="markdown"><a href="#markdown" class="headerlink" title="markdown"></a>markdown</h2><h2 id="title-Java常见实用类date-2026-06-11categories-Javatags-Java入门"><a href="#title-Java常见实用类date-2026-06-11categories-Javatags-Java入门" class="headerlink" title="title: Java常见实用类date: 2026-06-11categories: Javatags: Java入门"></a>title: Java常见实用类<br>date: 2026-06-11<br>categories: Java<br>tags: Java入门</h2><h1 id="一、字符串相关：String、StringBuilder、StringBuffer"><a href="#一、字符串相关：String、StringBuilder、StringBuffer" class="headerlink" title="一、字符串相关：String、StringBuilder、StringBuffer"></a>一、字符串相关：String、StringBuilder、StringBuffer</h1><h2 id="1-String"><a href="#1-String" class="headerlink" title="1. String"></a>1. String</h2><pre><code class="language-java">// 特点：字符串不可变，底层byte数组，存在常量池复用
+String s1 = &quot;abc&quot;;
+String s2 = new String(&quot;abc&quot;);
+
+// 常用方法
+s1.length();          // 获取字符串长度
+s1.equals(&quot;abc&quot;);     // 比较内容是否相等
+s1.contains(&quot;ab&quot;);    // 判断是否包含子串
+s1.substring(0,2);   // 截取字符串
+s1.split(&quot;,&quot;);        // 按符号分割成数组
+s1.trim();            // 去除首尾空格
+s1.toUpperCase();     // 转大写
+s1.toLowerCase();     // 转小写
+
+2. StringBuilder
+java
+运行
+// 线程不安全、拼接效率高，大量字符串拼接首选
+StringBuilder sb = new StringBuilder();
+sb.append(&quot;a&quot;);       // 拼接内容
+sb.reverse();         // 字符串反转
+sb.toString();        // 转为String
+
+3. StringBuffer
+java
+运行
+// 方法与StringBuilder完全一致，加synchronized同步锁，线程安全，性能更低
+StringBuffer sb = new StringBuffer();
+
+二、数学工具类：Math
+java
+运行
+// 全部静态方法，直接类名调用
+Math.abs(-10);        // 取绝对值
+Math.max(3,9);        // 获取最大值
+Math.min(3,9);        // 获取最小值
+Math.random();        // [0,1)随机小数
+Math.round(3.6);      // 四舍五入
+Math.ceil(3.1);       // 向上取整
+Math.floor(3.9);      // 向下取整
+Math.PI;              // 圆周率常量
+
+三、控制台输入：Scanner
+java
+运行
+import java.util.Scanner;
+Scanner sc = new Scanner(System.in);
+
+sc.nextInt();     // 读取整数
+sc.nextDouble();  // 读取小数
+sc.next();        // 读取一段字符串（空格截止）
+sc.nextLine();    // 读取整行字符串
+sc.close();       // 关闭输入流
+
+四、数组工具类：Arrays
+java
+运行
+import java.util.Arrays;
+int[] arr = {5,1,3};
+
+Arrays.toString(arr);     // 数组转字符串打印
+Arrays.sort(arr);         // 数组升序排序
+Arrays.copyOf(arr, 5);    // 数组拷贝
+Arrays.equals(a1,a2);     // 判断两个数组内容是否一致
+
+五、时间日期类（JDK8 推荐）
+1. LocalDate 日期（年月日）
+java
+运行
+LocalDate today = LocalDate.now();
+LocalDate date = LocalDate.of(2026,6,17);
+today.getYear();
+today.getMonthValue();
+today.getDayOfMonth();
+today.plusDays(3);  // 加3天
+
+2. LocalTime 时间（时分秒）
+java
+运行
+LocalTime now = LocalTime.now();
+LocalTime time = LocalTime.of(14,30);
+
+3. LocalDateTime 日期 + 时间
+java
+运行
+LocalDateTime ldt = LocalDateTime.now();
+// 格式化输出
+DateTimeFormatter fmt = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;);
+ldt.format(fmt);
+
+六、空值处理：Optional
+java
+运行
+// 避免空指针异常
+String str = null;
+Optional&lt;String&gt; opt = Optional.ofNullable(str);
+opt.orElse(&quot;默认值&quot;);    // 为空返回默认值
+opt.isPresent();         // 判断是否不为null
+
+七、系统工具类：System
+java
+运行
+System.out.println();  // 控制台输出
+System.currentTimeMillis(); // 获取当前毫秒时间戳
+System.exit(0);        // 终止程序
+System.arraycopy();    // 数组底层拷贝
+
+八、包装类（基本类型与字符串互转）
+java
+运行
+// 8种包装类：Byte Short Integer Long Float Double Character Boolean
+Integer num = Integer.valueOf(&quot;123&quot;); // 字符串转数字
+String s = Integer.toString(123);     // 数字转字符串
+
+// 自动装箱、拆箱
+Integer a = 10;  // 装箱
+int b = a;        // 拆箱
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/06/17/%E5%B8%B8%E8%A7%81%E5%AE%9E%E7%94%A8%E7%B1%BB/" data-id="cuidl2610kQL2zSl1dI0aiER3" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-继承与接口" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/06/17/%E7%BB%A7%E6%89%BF%E4%B8%8E%E6%8E%A5%E5%8F%A3/" class="article-date">
+  <time class="dt-published" datetime="2026-06-17T12:59:52.608Z" itemprop="datePublished">2026-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="markdown"><a href="#markdown" class="headerlink" title="markdown"></a>markdown</h2><h2 id="title-继承与接口date-2026-05-23categories-Javatags-Java入门"><a href="#title-继承与接口date-2026-05-23categories-Javatags-Java入门" class="headerlink" title="title: 继承与接口date: 2026-05-23categories: Javatags: Java入门"></a>title: 继承与接口<br>date: 2026-05-23<br>categories: Java<br>tags: Java入门</h2><h1 id="一、继承-extends"><a href="#一、继承-extends" class="headerlink" title="一、继承 extends"></a>一、继承 extends</h1><h2 id="1-继承概念"><a href="#1-继承概念" class="headerlink" title="1. 继承概念"></a>1. 继承概念</h2><pre><code class="language-java">// 继承：子类复用父类代码，实现代码复用，属于类与类的关系
+// 语法：子类 extends 父类
+class 子类 extends 父类 {
+
+}
+2. 继承特点
+java
+运行
+// 1. Java只支持单继承，一个类只能直接继承一个父类
+// 2. 支持多层继承：A extends B，B extends C
+// 3. 子类可以继承父类非private成员变量、成员方法
+// 4. private私有资源子类无法直接访问，需通过get/set调用
+// 5. 所有类直接/间接继承Object类，Object是顶层父类
+3. super 关键字
+java
+运行
+// super代表父类对象
+// 1. super.成员变量：访问父类同名成员变量
+// 2. super.方法()：调用父类重写前的方法
+// 3. super()：调用父类构造方法，必须放在子类构造第一行
+4. 方法重写 Override
+java
+运行
+// 子类重写父类方法，重写规则：
+// 1. 方法名、参数列表、返回值与父类保持一致
+// 2. 访问权限不能比父类更严格
+// 3. 不能抛出父类没有的更大异常
+// 4. 静态方法不能重写，只会隐藏父类静态方法
+class Father{
+    public void show(){
+        System.out.println(&quot;父类方法&quot;);
+    }
+}
+class Son extends Father{
+    @Override
+    public void show(){
+        System.out.println(&quot;子类重写方法&quot;);
+    }
+}
+5. final 与继承
+java
+运行
+// final修饰类：该类不能被继承
+// final修饰方法：子类不能重写此方法
+// final修饰变量：值不可修改
+final class Person{}
+二、接口 interface
+1. 接口定义语法
+java
+运行
+// 接口是行为规范，定义方法标准，不关心实现
+interface 接口名 {
+    // JDK7及之前：只能公共抽象方法
+    public abstract void test();
+    // JDK8：默认方法default、静态方法static
+    default void demo(){}
+    static void staticDemo(){}
+    // JDK9：私有方法private
+    private void privateDemo(){}
+    // 成员变量默认 public static final 常量，必须初始化
+    int MAX = 100;
+}
+2. 类实现接口 implements
+java
+运行
+// 一个类可以实现多个接口，逗号分隔
+class 类名 implements 接口1,接口2 {
+    // 必须重写接口中所有抽象方法
+}
+interface Play{
+    void game();
+}
+interface Study{
+    void read();
+}
+class Student implements Play,Study{
+    @Override
+    public void game() {}
+    @Override
+    public void read() {}
+}
+3. 接口多继承
+java
+运行
+// 接口支持多继承，使用extends，逗号分隔多个父接口
+interface A{}
+interface B{}
+interface C extends A,B{}
+4. 接口核心特性
+java
+运行
+// 1. 接口不能实例化，无构造方法
+// 2. 成员变量默认常量 public static final
+// 3. 抽象方法默认 public abstract
+// 4. 类单继承、多实现；接口多继承
+// 5. 弥补Java单继承局限，实现多规范定义
+三、继承 vs 接口 核心区别
+java
+运行
+// 1. 关键字：继承extends、实现implements
+// 2. 数量：类只能单继承；类可多实现接口
+// 3. 构造方法：父类有构造；接口无构造
+// 4. 成员变量：父类普通变量；接口全是常量
+// 5. 方法：普通/静态/final方法；抽象/default/static/private
+// 6. 关系：is-a 属于；can-do 具备某种能力
+// 7. 权限：可私有成员；接口所有抽象方法public
+四、使用场景
+java
+运行
+// 继承：多个类存在公共属性、公共行为，抽取父类复用
+// 接口：定义统一行为标准，不同类实现不同逻辑，多能力扩展
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/06/17/%E7%BB%A7%E6%89%BF%E4%B8%8E%E6%8E%A5%E5%8F%A3/" data-id="cuidgPWdsDtfdq6lwbwICZZ1E" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-线程创建的区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2026/06/07/%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-date">
@@ -764,185 +1263,6 @@ java
 
 
   
-    <article id="post-开闭原则" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/05/08/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/" class="article-date">
-  <time class="dt-published" datetime="2026-05-07T16:00:00.000Z" itemprop="datePublished">2026-05-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/05/08/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/">开闭原则</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>开闭原则（Open&#x2F;Closed Principle，OCP）：对扩展开放（Open for extension）当需要新增功能时，我们应该可以通过 ** 新增代码（比如新建类、新增实现）** 来完成，而不是修改已有的代码。系统要设计得具备足够的灵活性，能轻松支持功能的扩展。<br>对修改关闭（Closed for modification）已经稳定运行、经过测试的代码，应尽量避免直接修改其源码。因为修改旧代码很容易引入新的 Bug，影响原本正常的功能。</p>
-<p>&#x2F;&#x2F; 饼图类<br>class PieChart {<br>    public void display() {<br>        System.out.println(“绘制饼图”);<br>    }<br>}</p>
-<p>&#x2F;&#x2F; 柱状图类<br>class BarChart {<br>    public void display() {<br>        System.out.println(“绘制柱状图”);<br>    }<br>}</p>
-<p>&#x2F;&#x2F; 图表展示类（核心类）<br>class ChartDisplay {<br>    &#x2F;&#x2F; 根据类型展示图表<br>    public void showChart(String type) {<br>        if (“pie”.equals(type)) {<br>            PieChart pieChart &#x3D; new PieChart();<br>            pieChart.display();<br>        } else if (“bar”.equals(type)) {<br>            BarChart barChart &#x3D; new BarChart();<br>            barChart.display();<br>        }<br>        &#x2F;&#x2F; 新增图表类型，必须在这里添加else-if分支<br>    }<br>}<br>原始设计缺陷<br>违反开闭原则：新增折线图、散点图等图表类型时，必须修改ChartDisplay类的showChart方法，添加新的if-else分支，破坏了原有代码逻辑。<br>耦合度极高：ChartDisplay直接依赖具体的图表实现类，高层模块与底层实现紧密绑定，代码灵活性极差。<br>扩展性差：每一次扩展都需要改动核心代码，增加测试和维护成本，还容易引发连锁 BUG。<br>代码冗余：多个图表类重复定义display方法，缺乏统一规范。<br>二、三步重构：遵循开闭原则优化系统<br>针对上述问题，我们基于开闭原则，通过抽象化 + 多态的思路重构代码，核心思路是：依赖抽象，不依赖具体实现，将系统分为抽象层和实现层，实现扩展与修改分离。<br>第一步：定义抽象图表父类<br>抽取所有图表的公共行为（展示图表），定义抽象图表类或接口，统一图表的行为规范，让所有具体图表都遵循该契约。<br>java<br>运行<br>&#x2F;&#x2F; 抽象图表类（抽象层）<br>abstract class Chart {<br>    &#x2F;&#x2F; 抽象展示方法，所有子类必须实现<br>    public abstract void display();<br>}<br>第二步：具体图表类继承抽象类<br>让饼图、柱状图等具体图表类，继承抽象图表父类，实现各自的display方法。此时具体图表只关注自身的实现逻辑，与核心展示类解耦。<br>java<br>运行<br>&#x2F;&#x2F; 饼图（具体实现类）<br>class PieChart extends Chart {<br>    @Override<br>    public void display() {<br>        System.out.println(“绘制饼图”);<br>    }<br>}</p>
-<p>&#x2F;&#x2F; 柱状图（具体实现类）<br>class BarChart extends Chart {<br>    @Override<br>    public void display() {<br>        System.out.println(“绘制柱状图”);<br>    }<br>}<br>第三步：重构 ChartDisplay，依赖抽象<br>改造核心的ChartDisplay类，不再依赖具体的图表实现类，而是依赖抽象的 Chart 父类，通过多态调用图表展示方法，彻底移除if-else判断逻辑。<br>java<br>运行<br>&#x2F;&#x2F; 重构后的图表展示类（核心类）<br>class ChartDisplay {<br>    &#x2F;&#x2F; 依赖抽象Chart，而非具体图表类<br>    private Chart chart;</p>
-<pre><code>// 注入具体图表对象
-public void setChart(Chart chart) {
-    this.chart = chart;
-}
-
-// 统一展示方法
-public void showChart() {
-    // 多态调用，无需关心具体图表类型
-    chart.display();
-}
-</code></pre>
-<p>}<br>三、扩展示例：轻松新增折线图<br>遵循开闭原则重构后，新增图表类型时，无需修改任何原有代码，只需要新建一个图表子类，继承抽象Chart类并实现display方法即可，完全实现无侵入式扩展。<br>java<br>运行<br>&#x2F;&#x2F; 新增折线图（无需修改原有代码）<br>class LineChart extends Chart {<br>    @Override<br>    public void display() {<br>        System.out.println(“绘制折线图”);<br>    }<br>}<br>客户端调用<br>java<br>运行<br>public class Client {<br>    public static void main(String[] args) {<br>        ChartDisplay chartDisplay &#x3D; new ChartDisplay();</p>
-<pre><code>    // 展示饼图
-    chartDisplay.setChart(new PieChart());
-    chartDisplay.showChart();
-
-    // 展示柱状图
-    chartDisplay.setChart(new BarChart());
-    chartDisplay.showChart();
-
-    // 展示新增的折线图
-    chartDisplay.setChart(new LineChart());
-    chartDisplay.showChart();
-}
-</code></pre>
-<p>}</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/05/08/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/" data-id="cuidL1Vv-1m7xcD5gZZSQC_E9" data-title="开闭原则" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-形式化方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/05/05/%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%96%B9%E6%B3%95/" class="article-date">
-  <time class="dt-published" datetime="2026-05-04T16:00:00.000Z" itemprop="datePublished">2026-05-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/05/05/%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%96%B9%E6%B3%95/">形式化方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>面向对象程序设计的形式化方式，指的是用严格的数学语言和逻辑系统来定义 OOP 的语法、语义、类型规则，从而能够对程序行为进行推理和证明。这通常是一些极简的「核心演算」或逻辑框架，旨在抓住封装、继承、多态、动态分发等本质特性。</p>
-<p>常见的几种形式化路径有：</p>
-<ol>
-<li><p>对象演算（Object Calculus）<br>最经典的是 Abadi 与 Cardelli 的 ς‑演算 (Sigma Calculus)。它不把对象归约为函数，而是把对象本身作为原始计算实体，包含方法和字段。操作只有方法调用、方法覆写等。通过这种极小语言，能严格刻画子类型、继承、自我引用（self）以及方法调用的动态分发。</p>
-</li>
-<li><p>Featherweight Java（轻量级 Java）<br>Igarashi、Pierce、Wadler 提出的FJ，是去除了赋值等复杂特性的极小类 Java 语言。它完整保留了类、继承、方法重写、类型转换等核心，并给出操作语义与类型安全证明。因为足够小，FJ 成为研究泛型、混入（Mixin）等 OOP 扩展的标准载体。</p>
-</li>
-<li><p>基于记录与递归类型的 λ‑演算<br>将对象建模为 记录(Record) + 闭包。记录存储字段和方法，方法通过递归类型带上 self 参数实现自引用和动态分发。这样做的好处是可以直接嵌入已有的函数式&#x2F;类型论框架，但不把对象视为第一性原语。</p>
-</li>
-<li><p>共代数语义（Coalgebraic Semantics）<br>以共代数的方法对对象进行建模：把对象看成具有内部状态、可响应消息的「观察性行为」，类的继承被解释为共代数之间的态射。这种方式特别适合描述交互式、状态不断演化的对象系统。</p>
-</li>
-<li><p>ADT 与对象的对立形式化<br>William Cook 著名的分析指出：抽象数据类型（ADT）通过固定实现类型来隐藏细节，而对象则是通过自认知的动态分发实现数据抽象。这在形式化中体现为：对象的行为必须依赖一个绑定了具体方法的 self，无法简单用存在类型（∃）等同，这催生了一系列用自引用记录、F‑有界多态等方式刻画对象的研究。</p>
-</li>
-<li><p>面向验证的规约语言<br>如果形式化的目标是做正确性证明，常用的方式还包括 分离逻辑（处理对象引用与堆的别名问题）以及 JML、Spec# 等契约式规约语言。它们为 Java&#x2F;C# 中的类和方法附加前后置条件、不变式，配合定理证明器或模型检验来验证实现</p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/05/05/%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%96%B9%E6%B3%95/" data-id="cuidA3U55LMhf16dBeM6R4xxP" data-title="形式化方法" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-关键字" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/05/01/%E5%85%B3%E9%94%AE%E5%AD%97/" class="article-date">
-  <time class="dt-published" datetime="2026-04-30T16:00:00.000Z" itemprop="datePublished">2026-05-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/05/01/%E5%85%B3%E9%94%AE%E5%AD%97/">java常见关键字</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>关键字	   含义<br>abstract	声明抽象类或抽象方法<br>assert	断言（JDK 1.4 引入）<br>boolean	布尔类型<br>break	跳出循环或 switch 语句<br>byte	8 位有符号整数类型<br>case	switch 语句中的分支<br>catch	捕获异常<br>char	16 位 Unicode 字符类型<br>class	声明类<br>const	保留字，未使用（Java 中无此功能）<br>continue	跳过当前循环剩余部分，继续下一次迭代<br>default	switch 中的默认分支；或接口的默认方法<br>do	do-while 循环的开始<br>double	双精度浮点数类型<br>else	if 条件分支的否定分支<br>enum	声明枚举类型（JDK 5 引入）<br>extends	继承类或接口<br>final	常量、不可继承类、不可重写方法<br>finally	异常处理中总会执行的代码块<br>float	单精度浮点数类型<br>for	循环结构<br>goto	保留字，未使用<br>if	条件判断<br>implements	实现接口<br>import	导入类或包<br>instanceof	判断对象是否为某类型实例<br>int	32 位有符号整数类型<br>interface	声明接口<br>long	64 位有符号整数类型<br>native	声明本地方法（用其他语言实现）<br>new	创建对象实例<br>package	定义包<br>private	私有访问修饰符<br>protected	受保护访问修饰符<br>public	公有访问修饰符<br>return	方法返回值<br>short	16 位有符号整数类型<br>static	静态成员（类级别）<br>strictfp	严格浮点计算（JDK 1.2 引入）<br>super	父类引用<br>switch	多分支选择结构<br>synchronized	同步锁<br>this	当前对象引用<br>throw	手动抛出异常<br>throws	声明方法可能抛出的异常<br>transient	序列化时忽略字段<br>try	开始异常捕获或资源管理块<br>void	表示无返回值<br>volatile	保证变量可见性和有序性<br>while	循环结构</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/05/01/%E5%85%B3%E9%94%AE%E5%AD%97/" data-id="cuidoSNi6IoqfgisegCEJDw7n" data-title="java常见关键字" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -1000,23 +1320,23 @@ public void showChart() {
       <ul>
         
           <li>
+            <a href="/2026/06/17/java%20Swing/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/06/17/%E5%B8%B8%E8%A7%81%E5%AE%9E%E7%94%A8%E7%B1%BB/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/06/17/%E7%BB%A7%E6%89%BF%E4%B8%8E%E6%8E%A5%E5%8F%A3/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2026/06/07/%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA%E7%9A%84%E5%8C%BA%E5%88%AB/">Java两种创建线程方式：继承Thread类 VS 实现Runnable接口</a>
           </li>
         
           <li>
             <a href="/2026/06/02/%E8%BE%93%E5%85%A5%E6%B5%81%E4%B8%8E%E8%BE%93%E5%87%BA%E6%B5%81/">Java输入流与输出流</a>
-          </li>
-        
-          <li>
-            <a href="/2026/05/27/%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6/">文本文件复制、任意文件复制</a>
-          </li>
-        
-          <li>
-            <a href="/2026/05/18/%E6%95%B0%E7%BB%84/">数组</a>
-          </li>
-        
-          <li>
-            <a href="/2026/05/15/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB/">(no title)</a>
           </li>
         
       </ul>

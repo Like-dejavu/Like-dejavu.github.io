@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>dejavu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="markdowntitle: Java Swing 图形界面入门date: 2026-06-15categories: Javatags: Java入门,Swing一、Swing 基础概念&#x2F;&#x2F; Swing 是Java图形界面工具包，用于开发桌面窗口程序 &#x2F;&#x2F; 全部组件位于 javax.swing 包 &#x2F;&#x2F; 优点：跨平台、组件丰富、轻量级组件，不依赖本地系统控件 &#x2F;&#x2F; 顶层容器：JFrame(主窗口">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dejavu">
+<meta property="og:url" content="http://example.com/2026/06/17/java%20Swing/index.html">
+<meta property="og:site_name" content="dejavu">
+<meta property="og:description" content="markdowntitle: Java Swing 图形界面入门date: 2026-06-15categories: Javatags: Java入门,Swing一、Swing 基础概念&#x2F;&#x2F; Swing 是Java图形界面工具包，用于开发桌面窗口程序 &#x2F;&#x2F; 全部组件位于 javax.swing 包 &#x2F;&#x2F; 优点：跨平台、组件丰富、轻量级组件，不依赖本地系统控件 &#x2F;&#x2F; 顶层容器：JFrame(主窗口">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-06-17T13:05:59.585Z">
+<meta property="article:modified_time" content="2026-06-17T13:06:27.404Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="dejavu" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">dejavu</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-java Swing" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/06/17/java%20Swing/" class="article-date">
+  <time class="dt-published" datetime="2026-06-17T13:05:59.585Z" itemprop="datePublished">2026-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="markdown"><a href="#markdown" class="headerlink" title="markdown"></a>markdown</h2><h2 id="title-Java-Swing-图形界面入门date-2026-06-15categories-Javatags-Java入门-Swing"><a href="#title-Java-Swing-图形界面入门date-2026-06-15categories-Javatags-Java入门-Swing" class="headerlink" title="title: Java Swing 图形界面入门date: 2026-06-15categories: Javatags: Java入门,Swing"></a>title: Java Swing 图形界面入门<br>date: 2026-06-15<br>categories: Java<br>tags: Java入门,Swing</h2><h1 id="一、Swing-基础概念"><a href="#一、Swing-基础概念" class="headerlink" title="一、Swing 基础概念"></a>一、Swing 基础概念</h1><pre><code class="language-java">// Swing 是Java图形界面工具包，用于开发桌面窗口程序
+// 全部组件位于 javax.swing 包
+// 优点：跨平台、组件丰富、轻量级组件，不依赖本地系统控件
+// 顶层容器：JFrame(主窗口)、JDialog(弹窗)、JApplet(网页小程序，淘汰)
+1. 核心顶层容器 JFrame
+java
+运行
+import javax.swing.*;
+
+public class TestFrame {
+    public static void main(String[] args) {
+        // 创建主窗口对象
+        JFrame frame = new JFrame(&quot;我的窗口&quot;);
+
+        // 窗口基础设置
+        frame.setSize(400,300);        // 设置宽高
+        frame.setLocationRelativeTo(null); // 窗口居中
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 关闭窗口退出程序
+        frame.setVisible(true);        // 显示窗口
+    }
+}
+java
+运行
+// 常用关闭参数
+// EXIT_ON_CLOSE：关闭窗口直接退出程序
+// HIDE_ON_CLOSE：仅隐藏窗口，程序后台运行
+// DISPOSE_ON_CLOSE：销毁窗口资源
+二、常用基础组件
+1. 标签 JLabel（展示文字 / 图片）
+java
+运行
+JLabel label = new JLabel(&quot;这是文本标签&quot;);
+label.setText(&quot;修改文字&quot;);
+label.setHorizontalAlignment(JLabel.CENTER); // 文字居中
+2. 按钮 JButton（点击触发事件）
+java
+运行
+JButton btn = new JButton(&quot;点击按钮&quot;);
+3. 单行输入框 JTextField
+java
+运行
+JTextField input = new JTextField(20); // 20列宽度
+input.setText(&quot;默认文字&quot;);
+String text = input.getText(); // 获取输入内容
+4. 密码框 JPasswordField
+java
+5. 文本域 JTextArea（多行文本）
+java
+运行
+JTextArea area = new JTextArea(5,20);
+area.setLineWrap(true); // 自动换行
+6. 复选框 JCheckBox
+java
+运行
+JCheckBox cb = new JCheckBox(&quot;同意协议&quot;);
+cb.isSelected(); // 判断是否勾选
+7. 单选按钮 JRadioButton
+java
+运行
+JRadioButton r1 = new JRadioButton(&quot;男&quot;);
+JRadioButton r2 = new JRadioButton(&quot;女&quot;);
+// 按钮组实现单选互斥
+ButtonGroup group = new ButtonGroup();
+group.add(r1);
+group.add(r2);
+8. 下拉框 JComboBox
+java
+运行
+String[] arr = {&quot;苹果&quot;,&quot;香蕉&quot;,&quot;橙子&quot;};
+JComboBox&lt;String&gt; box = new JComboBox&lt;&gt;(arr);
+String select = (String)box.getSelectedItem();
+三、面板 JPanel（承载组件的容器）
+窗口不能直接放组件，必须通过 JPanel 中转
+java
+运行
+JPanel panel = new JPanel();
+panel.setLayout(null); // 关闭默认流式布局，使用绝对坐标
+
+// 设置组件坐标与大小
+JLabel l = new JLabel(&quot;测试&quot;);
+l.setBounds(50,50,100,30);
+panel.add(l); // 组件添加到面板
+
+frame.add(panel); // 面板添加到窗口
+四、三种常用布局管理器
+java
+运行
+// 1. FlowLayout 流式布局（JPanel默认）
+// 组件从左到右自动排列，自动换行
+panel.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+// 2. BorderLayout 边界布局（JFrame默认）
+// 分为东、南、西、北、中五个区域
+frame.add(btn, BorderLayout.NORTH);
+
+// 3. null 绝对布局，手动设置bounds坐标
+panel.setLayout(null);
+五、按钮点击事件（ActionListener）
+java
+运行
+JFrame frame = new JFrame(&quot;事件&quot;);
+frame.setSize(300,200);
+frame.setLocationRelativeTo(null);
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+JPanel panel = new JPanel();
+JButton btn = new JButton(&quot;点我弹窗&quot;);
+
+// 绑定点击监听
+btn.addActionListener(e -&gt; {
+    // 弹出提示框
+    JOptionPane.showMessageDialog(frame,&quot;按钮被点击了&quot;);
+});
+
+panel.add(btn);
+frame.add(panel);
+frame.setVisible(true);
+六、弹窗工具 JOptionPane
+java
+运行
+// 信息提示框
+JOptionPane.showMessageDialog(frame,&quot;提示文本&quot;);
+
+// 确认弹窗（是/否）
+int res = JOptionPane.showConfirmDialog(frame,&quot;是否确认？&quot;);
+
+// 输入弹窗
+String name = JOptionPane.showInputDialog(frame,&quot;请输入姓名&quot;);
+七、完整简易登录窗口示例
+java
+运行
+import javax.swing.*;
+
+public class LoginDemo {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame(&quot;登录界面&quot;);
+        frame.setSize(320,220);
+        frame.setLayout(null);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // 账号
+        JLabel userLab = new JLabel(&quot;账号：&quot;);
+        userLab.setBounds(60,40,60,25);
+        JTextField userInput = new JTextField();
+        userInput.setBounds(120,40,120,25);
+
+        // 密码
+        JLabel pwdLab = new JLabel(&quot;密码：&quot;);
+        pwdLab.setBounds(60,80,60,25);
+        JPasswordField pwdInput = new JPasswordField();
+        pwdInput.setBounds(120,80,120,25);
+
+        // 登录按钮
+        JButton loginBtn = new JButton(&quot;登录&quot;);
+        loginBtn.setBounds(100,130,100,30);
+        loginBtn.addActionListener(e-&gt;{
+            String user = userInput.getText();
+            String pwd = new String(pwdInput.getPassword());
+            if(&quot;admin&quot;.equals(user) &amp;&amp; &quot;123456&quot;.equals(pwd)){
+                JOptionPane.showMessageDialog(frame,&quot;登录成功&quot;);
+            }else{
+                JOptionPane.showMessageDialog(frame,&quot;账号或密码错误&quot;);
+            }
+        });
+
+        // 全部组件添加到窗口
+        frame.add(userLab);
+        frame.add(userInput);
+        frame.add(pwdLab);
+        frame.add(pwdInput);
+        frame.add(loginBtn);
+
+        frame.setVisible(true);
+    }
+}
+八、核心易错点
+java
+运行
+// 1. 组件必须先add到面板/窗口，否则界面不显示
+// 2. 使用绝对布局(null)时，必须调用setBounds设置坐标宽高
+// 3. 窗口设置完所有组件后，最后执行setVisible(true)
+// 4. Swing组件线程不安全，复杂程序推荐SwingUtilities.invokeLater
+// 5. JPasswordField获取密码不能直接toString，要用new String(getPassword())
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/06/17/java%20Swing/" data-id="cuidul83zqgItN8CJz_wKsXKa" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2026/06/17/%E5%B8%B8%E8%A7%81%E5%AE%9E%E7%94%A8%E7%B1%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/" rel="tag">代码示例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/" style="font-size: 10px;">代码示例</a> <a href="/tags/%E5%85%A5%E9%97%A8/" style="font-size: 20px;">入门</a> <a href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">后端开发</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/06/">June 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/05/">May 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">April 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/06/17/java%20Swing/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/06/17/%E5%B8%B8%E8%A7%81%E5%AE%9E%E7%94%A8%E7%B1%BB/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/06/17/%E7%BB%A7%E6%89%BF%E4%B8%8E%E6%8E%A5%E5%8F%A3/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/06/07/%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA%E7%9A%84%E5%8C%BA%E5%88%AB/">Java两种创建线程方式：继承Thread类 VS 实现Runnable接口</a>
+          </li>
+        
+          <li>
+            <a href="/2026/06/02/%E8%BE%93%E5%85%A5%E6%B5%81%E4%B8%8E%E8%BE%93%E5%87%BA%E6%B5%81/">Java输入流与输出流</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

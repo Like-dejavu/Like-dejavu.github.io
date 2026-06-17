@@ -6,15 +6,15 @@
   
   <title>dejavu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="title:反射机制，匿名内部类date:2026-05-12categories:Java一、Java 反射机制Java 反射机制是指程序在运行时，能够动态获取任意类的信息，并操作其成员（构造方法、字段、方法）的能力。它打破了编译期的静态限制，让程序具备极强的灵活性，是框架开发（如 Spring）的核心底层能力之一。反射的本质是通过 JVM 提供的 java.lang.reflect 包 AP">
+  <meta name="description" content="markdowntitle: Java常见实用类date: 2026-06-11categories: Javatags: Java入门一、字符串相关：String、StringBuilder、StringBuffer1. String&#x2F;&#x2F; 特点：字符串不可变，底层byte数组，存在常量池复用 String s1 &#x3D; &quot;abc&quot;; String s2 &#x3D; new String(">
 <meta property="og:type" content="article">
 <meta property="og:title" content="dejavu">
-<meta property="og:url" content="http://example.com/2026/05/15/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB/index.html">
+<meta property="og:url" content="http://example.com/2026/06/17/%E5%B8%B8%E8%A7%81%E5%AE%9E%E7%94%A8%E7%B1%BB/index.html">
 <meta property="og:site_name" content="dejavu">
-<meta property="og:description" content="title:反射机制，匿名内部类date:2026-05-12categories:Java一、Java 反射机制Java 反射机制是指程序在运行时，能够动态获取任意类的信息，并操作其成员（构造方法、字段、方法）的能力。它打破了编译期的静态限制，让程序具备极强的灵活性，是框架开发（如 Spring）的核心底层能力之一。反射的本质是通过 JVM 提供的 java.lang.reflect 包 AP">
+<meta property="og:description" content="markdowntitle: Java常见实用类date: 2026-06-11categories: Javatags: Java入门一、字符串相关：String、StringBuilder、StringBuffer1. String&#x2F;&#x2F; 特点：字符串不可变，底层byte数组，存在常量池复用 String s1 &#x3D; &quot;abc&quot;; String s2 &#x3D; new String(">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2026-05-15T07:04:06.232Z">
-<meta property="article:modified_time" content="2026-05-15T07:14:54.851Z">
+<meta property="article:published_time" content="2026-06-17T13:03:34.416Z">
+<meta property="article:modified_time" content="2026-06-17T13:03:58.502Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -73,10 +73,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-反射机制，匿名内部类" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-常见实用类" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2026/05/15/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB/" class="article-date">
-  <time class="dt-published" datetime="2026-05-15T07:04:06.232Z" itemprop="datePublished">2026-05-15</time>
+    <a href="/2026/06/17/%E5%B8%B8%E8%A7%81%E5%AE%9E%E7%94%A8%E7%B1%BB/" class="article-date">
+  <time class="dt-published" datetime="2026-06-17T13:03:34.416Z" itemprop="datePublished">2026-06-17</time>
 </a>
     
   </div>
@@ -85,14 +85,129 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <hr>
-<h2 id="title-反射机制，匿名内部类date-2026-05-12categories-Java"><a href="#title-反射机制，匿名内部类date-2026-05-12categories-Java" class="headerlink" title="title:反射机制，匿名内部类date:2026-05-12categories:Java"></a>title:反射机制，匿名内部类<br>date:2026-05-12<br>categories:Java</h2><p>一、Java 反射机制<br>Java 反射机制是指程序在运行时，能够动态获取任意类的信息，并操作其成员（构造方法、字段、方法）的能力。它打破了编译期的静态限制，让程序具备极强的灵活性，是框架开发（如 Spring）的核心底层能力之一。<br>反射的本质是通过 JVM 提供的 java.lang.reflect 包 API，访问方法区中存储的 Class 对象，进而操作类的实例。核心流程如下：<br>获取目标类的 Class 对象（反射的入口）<br>通过 Class 对象获取类的构造器、方法、字段等元数据<br>使用构造器创建对象，或调用方法、修改字段值<br>优缺点<br>优点：动态扩展、框架支撑、突破封装限制<br>缺点：性能损耗、破坏封装、可读性差<br>典型场景<br>Spring 依赖注入、ORM 映射、动态代理、插件化开发<br>简单示例<br>java<br>运行<br>Class&lt;?&gt; clazz &#x3D; Class.forName(“com.example.User”);<br>Object user &#x3D; clazz.getDeclaredConstructor().newInstance();<br>Method setName &#x3D; clazz.getDeclaredMethod(“setName”, String.class);<br>setName.invoke(user, “张三”);<br>二、匿名内部类<br>匿名内部类是无名称的局部内部类，用于一次性实现接口 &#x2F; 继承父类，简化代码。<br>核心要点<br>语法<br>java<br>运行<br>&#x2F;&#x2F; 实现接口<br>Runnable runnable &#x3D; new Runnable() {<br>    @Override<br>    public void run() { &#x2F;* 任务逻辑 *&#x2F; }<br>};<br>应用场景<br>方法执行耗时统计<br>GUI 事件监听<br>线程任务快速实现<br>特点<br>仅用一次、编译生成 外部类$1.class、可访问外部成员（含方法内 final 变量）<br>耗时统计示例<br>java<br>运行<br>public static void countTime(Runnable task) {<br>    long start &#x3D; System.currentTimeMillis();<br>    task.run();<br>    System.out.println(“耗时：” + (System.currentTimeMillis() - start) + “ms”);<br>}</p>
-<p>&#x2F;&#x2F; 调用<br>countTime(new Runnable() {<br>    @Override<br>    public void run() {<br>        &#x2F;&#x2F; 业务逻辑<br>    }<br>});<br>总结<br>反射是 Java 动态编程的基石，匿名内部类是简化一次性实现的工具</p>
+        <h2 id="markdown"><a href="#markdown" class="headerlink" title="markdown"></a>markdown</h2><h2 id="title-Java常见实用类date-2026-06-11categories-Javatags-Java入门"><a href="#title-Java常见实用类date-2026-06-11categories-Javatags-Java入门" class="headerlink" title="title: Java常见实用类date: 2026-06-11categories: Javatags: Java入门"></a>title: Java常见实用类<br>date: 2026-06-11<br>categories: Java<br>tags: Java入门</h2><h1 id="一、字符串相关：String、StringBuilder、StringBuffer"><a href="#一、字符串相关：String、StringBuilder、StringBuffer" class="headerlink" title="一、字符串相关：String、StringBuilder、StringBuffer"></a>一、字符串相关：String、StringBuilder、StringBuffer</h1><h2 id="1-String"><a href="#1-String" class="headerlink" title="1. String"></a>1. String</h2><pre><code class="language-java">// 特点：字符串不可变，底层byte数组，存在常量池复用
+String s1 = &quot;abc&quot;;
+String s2 = new String(&quot;abc&quot;);
+
+// 常用方法
+s1.length();          // 获取字符串长度
+s1.equals(&quot;abc&quot;);     // 比较内容是否相等
+s1.contains(&quot;ab&quot;);    // 判断是否包含子串
+s1.substring(0,2);   // 截取字符串
+s1.split(&quot;,&quot;);        // 按符号分割成数组
+s1.trim();            // 去除首尾空格
+s1.toUpperCase();     // 转大写
+s1.toLowerCase();     // 转小写
+
+2. StringBuilder
+java
+运行
+// 线程不安全、拼接效率高，大量字符串拼接首选
+StringBuilder sb = new StringBuilder();
+sb.append(&quot;a&quot;);       // 拼接内容
+sb.reverse();         // 字符串反转
+sb.toString();        // 转为String
+
+3. StringBuffer
+java
+运行
+// 方法与StringBuilder完全一致，加synchronized同步锁，线程安全，性能更低
+StringBuffer sb = new StringBuffer();
+
+二、数学工具类：Math
+java
+运行
+// 全部静态方法，直接类名调用
+Math.abs(-10);        // 取绝对值
+Math.max(3,9);        // 获取最大值
+Math.min(3,9);        // 获取最小值
+Math.random();        // [0,1)随机小数
+Math.round(3.6);      // 四舍五入
+Math.ceil(3.1);       // 向上取整
+Math.floor(3.9);      // 向下取整
+Math.PI;              // 圆周率常量
+
+三、控制台输入：Scanner
+java
+运行
+import java.util.Scanner;
+Scanner sc = new Scanner(System.in);
+
+sc.nextInt();     // 读取整数
+sc.nextDouble();  // 读取小数
+sc.next();        // 读取一段字符串（空格截止）
+sc.nextLine();    // 读取整行字符串
+sc.close();       // 关闭输入流
+
+四、数组工具类：Arrays
+java
+运行
+import java.util.Arrays;
+int[] arr = {5,1,3};
+
+Arrays.toString(arr);     // 数组转字符串打印
+Arrays.sort(arr);         // 数组升序排序
+Arrays.copyOf(arr, 5);    // 数组拷贝
+Arrays.equals(a1,a2);     // 判断两个数组内容是否一致
+
+五、时间日期类（JDK8 推荐）
+1. LocalDate 日期（年月日）
+java
+运行
+LocalDate today = LocalDate.now();
+LocalDate date = LocalDate.of(2026,6,17);
+today.getYear();
+today.getMonthValue();
+today.getDayOfMonth();
+today.plusDays(3);  // 加3天
+
+2. LocalTime 时间（时分秒）
+java
+运行
+LocalTime now = LocalTime.now();
+LocalTime time = LocalTime.of(14,30);
+
+3. LocalDateTime 日期 + 时间
+java
+运行
+LocalDateTime ldt = LocalDateTime.now();
+// 格式化输出
+DateTimeFormatter fmt = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;);
+ldt.format(fmt);
+
+六、空值处理：Optional
+java
+运行
+// 避免空指针异常
+String str = null;
+Optional&lt;String&gt; opt = Optional.ofNullable(str);
+opt.orElse(&quot;默认值&quot;);    // 为空返回默认值
+opt.isPresent();         // 判断是否不为null
+
+七、系统工具类：System
+java
+运行
+System.out.println();  // 控制台输出
+System.currentTimeMillis(); // 获取当前毫秒时间戳
+System.exit(0);        // 终止程序
+System.arraycopy();    // 数组底层拷贝
+
+八、包装类（基本类型与字符串互转）
+java
+运行
+// 8种包装类：Byte Short Integer Long Float Double Character Boolean
+Integer num = Integer.valueOf(&quot;123&quot;); // 字符串转数字
+String s = Integer.toString(123);     // 数字转字符串
+
+// 自动装箱、拆箱
+Integer a = 10;  // 装箱
+int b = a;        // 拆箱
+</code></pre>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/05/15/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB/" data-id="cuidiO5qMmXIdDGZHzcoZJft6" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/06/17/%E5%B8%B8%E8%A7%81%E5%AE%9E%E7%94%A8%E7%B1%BB/" data-id="cuidl2610kQL2zSl1dI0aiER3" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -102,19 +217,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2026/05/18/%E6%95%B0%E7%BB%84/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2026/06/17/java%20Swing/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          数组
+          (no title)
         
       </div>
     </a>
   
   
-    <a href="/2026/05/13/%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%E4%B8%8E%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2026/06/17/%E7%BB%A7%E6%89%BF%E4%B8%8E%E6%8E%A5%E5%8F%A3/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">循环语句与条件分支语句</div>
+      <div class="article-nav-title"></div>
     </a>
   
 </nav>
