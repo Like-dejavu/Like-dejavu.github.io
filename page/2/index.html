@@ -71,6 +71,78 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-类与对象" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/04/24/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" class="article-date">
+  <time class="dt-published" datetime="2026-04-23T16:00:00.000Z" itemprop="datePublished">2026-04-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/04/24/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/">类与对象</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>类是没有实体的模板、设计图，它定义了某一类事物的共同特征（属性）和行为（方法）。</p>
+<p>以“手机”为例，它作为一个类，包含以下核心要素：</p>
+<ul>
+<li>共同特征（属性）：品牌、型号、颜色、内存</li>
+<li>共同行为（方法）：打电话、发消息、拍照</li>
+</ul>
+<p>类本身是抽象的，无法直接看到、摸到，其核心作用是约定这类事物必须具备的属性和行为。</p>
+<p>对象是根据类的模板创建出来的具体实体，是类的实例化结果。</p>
+<p>类与对象的核心关系是：<br><strong>类是对象的模板，对象是类的实例</strong>。<br>一个类可以创建无数个对象，所有对象都拥有类定义的属性和行为，但不同对象的属性值可以存在差异。</p>
+<hr>
+<h2 id="一、定义类（模板）"><a href="#一、定义类（模板）" class="headerlink" title="一、定义类（模板）"></a>一、定义类（模板）</h2><p>类的定义格式：<br><code>修饰符 + class + 类名 + { 属性 + 方法 }</code></p>
+<pre><code class="language-java">public class Phone {
+    // 成员变量（属性）
+    String brand;  // 品牌
+    String model;  // 型号
+    String color;  // 颜色
+    int memory;    // 内存
+
+    // 成员方法（行为）
+    public void call() {
+        System.out.println(brand + &quot; &quot; + model + &quot; 正在打电话&quot;);
+    }
+
+    public void sendMessage() {
+        System.out.println(brand + &quot; &quot; + model + &quot; 正在发消息&quot;);
+    }
+}
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/04/24/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" data-id="cuidV-5MHfOAGHbN6_Qmlkw7q" data-title="类与对象" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-显示当前时间" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2026/04/17/%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/" class="article-date">
@@ -118,7 +190,7 @@ public class Main {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/17/%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/" data-id="cuidmn0OLHFelOkB-wJYw_sSG" data-title="Java 格式化当前系统时间" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/17/%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/" data-id="cuidm_-65LeUHjBqbFiJjJips" data-title="Java 格式化当前系统时间" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -194,7 +266,7 @@ public class Main {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/15/%E5%9F%83%E6%B0%8F%E7%AD%9B%E7%B4%A0%E6%95%B0/" data-id="cuid7xx9CsmPyfTWNd_GWMKNd" data-title="给定要筛数值的范围 n ，从2开始，将每个素数的各倍数标记成合数。如果一个数没有被之前的数标记，那它一定是素数预先建立数组来存储从 1 至 n 的所有素数，方便多次查找" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/15/%E5%9F%83%E6%B0%8F%E7%AD%9B%E7%B4%A0%E6%95%B0/" data-id="cuidCi0wuq9O-4hmx9tLcxA7l" data-title="给定要筛数值的范围 n ，从2开始，将每个素数的各倍数标记成合数。如果一个数没有被之前的数标记，那它一定是素数预先建立数组来存储从 1 至 n 的所有素数，方便多次查找" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -245,7 +317,7 @@ public class Main {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/09/hello-world/" data-id="cuid23qmZkbYCye-N9awPi1mR" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/09/hello-world/" data-id="cuid8tbevrnoNv1G7Cixz_KyR" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -293,7 +365,7 @@ public class Main {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/04/09/1/" data-id="cuidyfslzeC7ODqkYmwPTOBJN" data-title="我的第一个Java程序" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/04/09/1/" data-id="cuidIe0W7Y0Z3DkhqNjQTI5Rd" data-title="我的第一个Java程序" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       

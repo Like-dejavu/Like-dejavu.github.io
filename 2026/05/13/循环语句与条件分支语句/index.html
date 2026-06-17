@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>循环语句与条件分支语句 | dejavu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一、条件分支语句分支语句用于根据布尔条件，选择性执行不同代码块，分为if-else、switch两类。 1. if-else 分支基础格式&#x2F;&#x2F; 单if判断 if(布尔条件){     条件成立执行代码; }  &#x2F;&#x2F; if-else 二选一 if(条件){     成立执行; }else{     不成立执行; }  &#x2F;&#x2F; 多分支 if-else if-else if(条件1){     &#x2F;&#x2F; 条件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="循环语句与条件分支语句">
+<meta property="og:url" content="http://example.com/2026/05/13/%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%E4%B8%8E%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5/index.html">
+<meta property="og:site_name" content="dejavu">
+<meta property="og:description" content="一、条件分支语句分支语句用于根据布尔条件，选择性执行不同代码块，分为if-else、switch两类。 1. if-else 分支基础格式&#x2F;&#x2F; 单if判断 if(布尔条件){     条件成立执行代码; }  &#x2F;&#x2F; if-else 二选一 if(条件){     成立执行; }else{     不成立执行; }  &#x2F;&#x2F; 多分支 if-else if-else if(条件1){     &#x2F;&#x2F; 条件">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-05-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-17T12:50:40.967Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="入门">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="dejavu" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">dejavu</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-循环语句与条件分支语句" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/05/13/%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%E4%B8%8E%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5/" class="article-date">
+  <time class="dt-published" datetime="2026-05-12T16:00:00.000Z" itemprop="datePublished">2026-05-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      循环语句与条件分支语句
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="一、条件分支语句"><a href="#一、条件分支语句" class="headerlink" title="一、条件分支语句"></a>一、条件分支语句</h1><p>分支语句用于根据布尔条件，选择性执行不同代码块，分为<code>if-else</code>、<code>switch</code>两类。</p>
+<h2 id="1-if-else-分支"><a href="#1-if-else-分支" class="headerlink" title="1. if-else 分支"></a>1. if-else 分支</h2><h3 id="基础格式"><a href="#基础格式" class="headerlink" title="基础格式"></a>基础格式</h3><pre><code class="language-java">// 单if判断
+if(布尔条件){
+    条件成立执行代码;
+}
+
+// if-else 二选一
+if(条件){
+    成立执行;
+}else{
+    不成立执行;
+}
+
+// 多分支 if-else if-else
+if(条件1){
+    // 条件1满足
+}else if(条件2){
+    // 条件2满足
+}else{
+    // 所有条件都不满足
+}
+特点
+java
+运行
+// 1. 括号内必须是true/false布尔表达式；
+// 2. 只有一行代码时大括号可省略，但不推荐；
+// 3. 支持嵌套 if，可实现多层判断。
+
+示例
+java
+运行
+int score = 85;
+if(score &gt;= 90){
+    System.out.println(&quot;优秀&quot;);
+}else if(score &gt;= 60){
+    System.out.println(&quot;及格&quot;);
+}else{
+    System.out.println(&quot;不及格&quot;);
+}
+
+2. switch 分支
+语法格式
+java
+运行
+switch(表达式){
+    case 值1:
+        执行代码;
+        break;
+    case 值2:
+        执行代码;
+        break;
+    default:
+        所有case不匹配时执行;
+}
+
+支持数据类型
+java
+运行
+// byte、short、int、char、String、枚举（JDK7+ 支持字符串）
+
+关键规则
+java
+运行
+// 1. break：跳出 switch，不加会发生case穿透，继续执行后续 case；
+// 2. default：可选，匹配不到任何 case 时执行，位置不限；
+// 3. case 后只能写常量，不能写变量、区间表达式。
+
+穿透案例（利用穿透实现多值匹配）
+java
+运行
+int month = 2;
+switch (month){
+    case 1:
+    case 2:
+    case 12:
+        System.out.println(&quot;冬季&quot;);
+        break;
+    case 3:
+    case 4:
+    case 5:
+        System.out.println(&quot;春季&quot;);
+        break;
+    default:
+        System.out.println(&quot;未知月份&quot;);
+}
+
+3. 三元运算符（简易分支）
+格式
+java
+运行
+// 布尔条件 ? 条件成立值 : 不成立值
+
+示例
+java
+运行
+int a = 10, b = 20;
+int max = a &gt; b ? a : b;
+
+限制
+java
+运行
+// 仅适合简单二选一赋值，不能执行多行代码。
+
+二、循环语句
+循环用于重复执行一段代码，Java 提供 for、while、do-while 三种循环，搭配 break、continue 控制循环跳转。
+1. for 循环（已知循环次数首选）
+标准语法
+java
+运行
+for(初始化变量;循环条件;更新变量){
+    循环体代码;
+}
+
+执行流程
+java
+运行
+// 初始化 → 判断条件 (true 执行循环体) → 更新变量 → 再次判断条件
+
+示例：打印 1~10
+java
+运行
+for(int i = 1; i &lt;= 10; i++){
+    System.out.println(i);
+}
+
+增强 for 循环（for-each，遍历数组 / 集合）
+java
+运行
+// 无需下标，仅用于读取数据，不能修改容器长度
+int[] arr = {1,2,3};
+for(int num : arr){
+    System.out.println(num);
+}
+
+2. while 循环（未知循环次数）
+语法
+java
+运行
+while(布尔条件){
+    循环体;
+    更新条件变量;
+}
+
+特点
+java
+运行
+// 先判断，后执行，条件不成立一次都不运行
+
+示例
+java
+运行
+int i = 1;
+while(i &lt;= 5){
+    System.out.println(i);
+    i++;
+}
+
+3. do-while 循环
+语法
+java
+运行
+do{
+    循环体;
+}while(条件);
+
+特点
+java
+运行
+// 先执行一次，再判断条件，最少执行 1 次
+
+示例
+java
+运行
+int i = 10;
+do{
+    System.out.println(&quot;至少执行一次&quot;);
+}while(i &lt; 0);
+
+三、循环控制关键字
+1. break
+java
+运行
+// 直接终止当前整个循环，跳出循环体
+for(int i=1;i&lt;=10;i++){
+    if(i == 5){
+        break; // i=5直接结束循环
+    }
+    System.out.println(i);
+}
+
+2. continue
+java
+运行
+// 终止本次循环，直接进入下一轮循环，不跳出整体循环
+for(int i=1;i&lt;=5;i++){
+    if(i == 3){
+        continue; // i=3跳过本次输出
+    }
+    System.out.println(i);
+}
+
+四、三种循环对比总结
+java
+运行
+// for：明确循环次数，适合数组遍历、固定次数循环；
+// while：不确定循环次数，先判断后执行；
+// do-while：必须至少执行一次的场景。
+
+五、常见易错点
+java
+运行
+// 1. while/do-while 忘记更新循环变量，造成死循环；
+// 2. switch 遗漏 break，引发 case 穿透；
+// 3. if 后无大括号时，仅第一行代码属于分支内；
+// 4. for-each 循环无法获取数组下标，不能增删元素；
+// 5. switch case 不能写区间判断，只能等值匹配。
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/05/13/%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%E4%B8%8E%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5/" data-id="cuidxJ5vKdI6akTaF0W9rp9x4" data-title="循环语句与条件分支语句" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2026/05/15/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2026/05/08/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">单一职责原则</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/" rel="tag">代码示例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/" style="font-size: 10px;">代码示例</a> <a href="/tags/%E5%85%A5%E9%97%A8/" style="font-size: 20px;">入门</a> <a href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">后端开发</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/06/">June 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/05/">May 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">April 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/06/07/%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA%E7%9A%84%E5%8C%BA%E5%88%AB/">Java两种创建线程方式：继承Thread类 VS 实现Runnable接口</a>
+          </li>
+        
+          <li>
+            <a href="/2026/06/02/%E8%BE%93%E5%85%A5%E6%B5%81%E4%B8%8E%E8%BE%93%E5%87%BA%E6%B5%81/">Java输入流与输出流</a>
+          </li>
+        
+          <li>
+            <a href="/2026/05/27/%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6/">文本文件复制、任意文件复制</a>
+          </li>
+        
+          <li>
+            <a href="/2026/05/18/%E6%95%B0%E7%BB%84/">数组</a>
+          </li>
+        
+          <li>
+            <a href="/2026/05/15/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%EF%BC%8C%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
