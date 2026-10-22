@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head><!-- hexo injector head_begin start --><script>(function(){try{var t=localStorage.getItem('dj-theme');if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}window.DJ_SITE={"title":"dejavu","subtitle":"","description":"Java · 后端开发 · 技术笔记"};})();</script><!-- hexo injector head_begin end -->
+  <meta charset="utf-8">
+  
+  
+  <title>Python实验二 | dejavu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="实验2 数据看板一、实验名称数据看板的设计与实现二、实验学时2~4学时三、实验目的  掌握数据看板的基本概念、核心功能与应用场景，理解数据可视化、数据大屏、实时看板的区别与联系，了解数据看板在企业运维、数据分析、业务监控中的实际价值。 熟悉数据看板的设计原则与布局规范，包括视觉层级、色彩搭配、图表选型、信息降噪、适配布局等核心设计逻辑，能够根据业务需求规划看板结构。 学会根据业务数据特征选择适配的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python实验二">
+<meta property="og:url" content="https://like-dejavu.github.io/2026/10/18/2026-10-22-python/index.html">
+<meta property="og:site_name" content="dejavu">
+<meta property="og:description" content="实验2 数据看板一、实验名称数据看板的设计与实现二、实验学时2~4学时三、实验目的  掌握数据看板的基本概念、核心功能与应用场景，理解数据可视化、数据大屏、实时看板的区别与联系，了解数据看板在企业运维、数据分析、业务监控中的实际价值。 熟悉数据看板的设计原则与布局规范，包括视觉层级、色彩搭配、图表选型、信息降噪、适配布局等核心设计逻辑，能够根据业务需求规划看板结构。 学会根据业务数据特征选择适配的">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-18T00:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-22T12:45:03.524Z">
+<meta property="article:author" content="dejavu">
+<meta property="article:tag" content="Java, 后端开发, 技术笔记">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="dejavu" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<!-- hexo injector head_end start --><link rel="stylesheet" href="/css/dejavu-ui.css" media="all"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.2"></head>
+
+<body><!-- hexo injector body_begin start --><div id="dj-stats" hidden data-stats="{&quot;posts&quot;:16,&quot;categories&quot;:4,&quot;tags&quot;:7}"></div><!-- hexo injector body_begin end -->
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">dejavu</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/categories">分类</a>
+        
+          <a class="main-nav-link" href="/tags">标签</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://like-dejavu.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-2026-10-22-python" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/10/18/2026-10-22-python/" class="article-date">
+  <time class="dt-published" datetime="2026-10-18T00:00:00.000Z" itemprop="datePublished">2026-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Python实验二
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>实验2 数据看板<br>一、实验名称<br>数据看板的设计与实现<br>二、实验学时<br>2~4学时<br>三、实验目的</p>
+<ol>
+<li>掌握数据看板的基本概念、核心功能与应用场景，理解数据可视化、数据大屏、实时看板的区别与联系，了解数据看板在企业运维、数据分析、业务监控中的实际价值。</li>
+<li>熟悉数据看板的设计原则与布局规范，包括视觉层级、色彩搭配、图表选型、信息降噪、适配布局等核心设计逻辑，能够根据业务需求规划看板结构。</li>
+<li>学会根据业务数据特征选择适配的可视化图表（柱状图、折线图、饼图、仪表盘、地图、数据卡片等），实现数据的直观展示与维度分析。</li>
+<li>培养数据思维与可视化设计能力，能够独立完成从需求分析、版面设计、数据处理到看板落地的完整流程，具备简单的数据监控与数据分析能力。</li>
+<li>理解静态看板与动态实时看板的差异，掌握数据刷新、动态轮播、联动交互等基础功能的实现原理。<br>四、实验环境</li>
+<li>硬件：计算机、网络环境</li>
+<li>软件：浏览器、VS Code、Streamlit + Pandas + Plotly<br>五、基础实验任务（必做）<br>本部分为核心必做内容，完成基础看板的设计与搭建，掌握核心操作流程。<br>任务1：看板需求分析与版面设计<br>自选业务场景（学生成绩统计、校园消费数据、电商销售数据、企业运维数据、城市交通数据等，数据可AI生成），明确看板核心展示需求。规划看板整体布局，划分数据概览区、维度统计区、趋势分析区、明细数据区四大模块，确定整体配色方案（主色、辅助色、背景色），绘制简易版面草图。<br>任务2：实验数据准备与预处理<br>收集或生成模拟数据集，保存为Excel&#x2F;CSV格式。对数据进行基础预处理，剔除无效数据、空值、异常值，整理统计维度（时间维度、分类维度、数值维度），确保数据可直接用于可视化展示。<br>任务3：基础可视化图表搭建<br>基于预处理数据，完成至少3种以上基础图表的制作：使用数据卡片展示核心指标（总数、平均值、增长率）；使用柱状图&#x2F;条形图展示分类数据对比；使用折线图展示数据时间变化趋势；使用饼图&#x2F;环形图展示数据占比结构。<br>任务4：静态数据看板整合实现<br>将所有可视化组件、数据表格、标题、边框、背景等元素整合到同一页面，完成整体排版适配。调整组件大小、间距、字体、颜色，保证页面整洁、层级清晰、视觉统一，实现完整的静态数据看板效果。<br>任务5：实验结果验证与总结<br>检查看板数据展示准确性、页面美观度、功能完整性，截图保存最终成果，梳理实验过程中遇到的问题及解决方法。<br>六、进阶实验任务（选做，提升能力）<br>在基础任务之上，优化看板效果，实现动态交互与视觉升级，提升看板实用性。<br>进阶1：动态视觉效果优化<br>为看板添加动态效果，包括数据自动轮播、图表hover悬浮提示、数值滚动动画、组件渐入动画等；适配屏幕分辨率，实现看板自适应布局，避免页面错位、溢出问题。<br>进阶2：图表联动与筛选功能实现<br>添加时间筛选、分类筛选、下拉选择等功能，实现筛选后所有图表数据同步更新；实现图表联动效果，点击某一图表分类，关联图表同步展示对应维度数据，提升看板交互性。<br>进阶3：多维度数据分析可视化<br>新增高级可视化组件，包括数据排行榜、热力图、雷达图、进度仪表盘等，从多维度、多视角展示数据特征，实现数据对比、数据预警、极值展示等功能。<br>七、实验扩展任务（拔高、创新拓展）<br>面向工程实战与创新应用，拓展看板的实时性、功能性与落地性，适合课程拔高、课程设计、竞赛使用。<br>扩展1：实时数据看板搭建<br>对接动态数据源（接口数据、数据库实时数据、Python动态生成数据），设置数据自动刷新机制（秒级&#x2F;分钟级刷新），替代静态本地数据，实现真正的实时数据监控看板。<br>扩展2：数据预警与异常监控功能<br>自定义数据阈值，为核心指标添加预警功能，当数据超出正常范围时，实现数值变色、弹窗提醒、闪烁提示等效果，满足运维监控、业务风险预警的实际场景需求。<br>扩展3：大屏可视化与移动端适配<br>优化页面样式，适配超宽数据大屏展示场景，添加科技风背景、动态粒子效果、边框特效；同时适配手机、平板等移动端设备，实现多终端兼容展示。<br>扩展4：数据统计分析与报告输出<br>基于看板展示的数据，进行深度数据分析，总结数据变化规律、业务优势与存在问题；实现数据导出、图片导出功能，支持一键生成可视化数据报告，完成从展示到分析输出的闭环。<br>扩展5：个性化定制与功能创新<br>结合实际场景创新功能，例如添加数据排序、数据钻取、历史数据对比、多主题切换（亮色&#x2F;暗色模式）等功能，提升看板的个性化与实用性。<br>八、实验实验要求</li>
+<li>基础任务全员完成，界面整洁、数据准确、布局合理，无明显格式错误。</li>
+<li>进阶任务鼓励自主完成，提升页面交互性与视觉效果。</li>
+<li>扩展任务为创新加分项，可结合自身能力自主拓展，体现个性化设计与实战能力。</li>
+<li>实验结束后提交完整源码&#x2F;工程文件、看板成品截图、实验报告，上传个人博客。</li>
+</ol>
+<p>成品文件与截图:</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/user-attachments/files/33814178/new-chat.zip">new-chat.zip</a></p>
+<!-- issue: 5 -->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://like-dejavu.github.io/2026/10/18/2026-10-22-python/" data-id="cuid75_5gnU-_tG0e2efuJQ3M" data-title="Python实验二" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2026/10/19/2026-10-19-python/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          python
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2026/10/11/2026-10-11-python/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Python</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python%E5%85%A5%E9%97%A8/">Python入门</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/" rel="tag">代码示例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">数据分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" rel="tag">文件处理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/" style="font-size: 10px;">代码示例</a> <a href="/tags/%E5%85%A5%E9%97%A8/" style="font-size: 20px;">入门</a> <a href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">后端开发</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 10px;">数据分析</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" style="font-size: 10px;">文件处理</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/10/">十月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/06/">六月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/05/">五月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">四月 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/10/19/2026-10-19-python/">python</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/18/2026-10-22-python/">Python实验二</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/11/2026-10-11-python/">Python</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/05/2026-10-05-python-experiment/">Python实验一</a>
+          </li>
+        
+          <li>
+            <a href="/2026/06/07/%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA%E7%9A%84%E5%8C%BA%E5%88%AB/">Java两种创建线程方式：继承Thread类 VS 实现Runnable接口</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 dejavu<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/categories" class="mobile-nav-link">分类</a>
+  
+    <a href="/tags" class="mobile-nav-link">标签</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<!-- hexo injector body_end start --><script src="/js/dejavu-ui.js" defer></script><!-- hexo injector body_end end --></body>
+</html>

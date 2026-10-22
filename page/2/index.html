@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+<head><!-- hexo injector head_begin start --><script>(function(){try{var t=localStorage.getItem('dj-theme');if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}window.DJ_SITE={"title":"dejavu","subtitle":"","description":"Java · 后端开发 · 技术笔记"};})();</script><!-- hexo injector head_begin end -->
+  <meta charset="utf-8">
+  
+  
+  <title>dejavu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Java · 后端开发 · 技术笔记">
+<meta property="og:type" content="website">
+<meta property="og:title" content="dejavu">
+<meta property="og:url" content="https://like-dejavu.github.io/page/2/index.html">
+<meta property="og:site_name" content="dejavu">
+<meta property="og:description" content="Java · 后端开发 · 技术笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="dejavu">
+<meta property="article:tag" content="Java, 后端开发, 技术笔记">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="dejavu" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<!-- hexo injector head_end start --><link rel="stylesheet" href="/css/dejavu-ui.css" media="all"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.2"></head>
+
+<body><!-- hexo injector body_begin start --><div id="dj-stats" hidden data-stats="{&quot;posts&quot;:16,&quot;categories&quot;:4,&quot;tags&quot;:7}"></div><!-- hexo injector body_begin end -->
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">dejavu</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/categories">分类</a>
+        
+          <a class="main-nav-link" href="/tags">标签</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://like-dejavu.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-形式化方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/05/05/%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2026-05-05T00:00:00.000Z" itemprop="datePublished">2026-05-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/05/05/%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%96%B9%E6%B3%95/">形式化方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>面向对象程序设计的形式化方式，指的是用严格的数学语言和逻辑系统来定义 OOP 的语法、语义、类型规则，从而能够对程序行为进行推理和证明。</p>
+<p>常见的形式化路径：</p>
+<ol>
+<li><strong>对象演算（Object Calculus）</strong>：Abadi 与 Cardelli 的 ς-演算，把对象本身作为原始计算实体。</li>
+<li><strong>Featherweight Java</strong>：Igarashi、Pierce、Wadler 提出的 FJ，去除复杂特性的极小类 Java 语言。</li>
+<li><strong>基于记录与递归类型的 λ-演算</strong>：将对象建模为记录 + 闭包。</li>
+<li><strong>共代数语义</strong>：把对象看成具有内部状态、可响应消息的观察性行为。</li>
+<li><strong>ADT 与对象的对立</strong>：William Cook 指出 ADT 与对象在数据抽象上的根本差异。</li>
+<li><strong>面向验证的规约语言</strong>：分离逻辑、JML、Spec# 等契约式规约语言。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://like-dejavu.github.io/2026/05/05/%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%96%B9%E6%B3%95/" data-id="cuid5ZvYz8Hmy5HJAeg_2Wf7G" data-title="形式化方法" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-关键字" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/05/01/%E5%85%B3%E9%94%AE%E5%AD%97/" class="article-date">
+  <time class="dt-published" datetime="2026-05-01T00:00:00.000Z" itemprop="datePublished">2026-05-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/05/01/%E5%85%B3%E9%94%AE%E5%AD%97/">java常见关键字</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>abstract</td>
+<td>声明抽象类或抽象方法</td>
+</tr>
+<tr>
+<td>assert</td>
+<td>断言（JDK 1.4 引入）</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>布尔类型</td>
+</tr>
+<tr>
+<td>break</td>
+<td>跳出循环或 switch 语句</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>8 位有符号整数类型</td>
+</tr>
+<tr>
+<td>case</td>
+<td>switch 语句中的分支</td>
+</tr>
+<tr>
+<td>catch</td>
+<td>捕获异常</td>
+</tr>
+<tr>
+<td>char</td>
+<td>16 位 Unicode 字符类型</td>
+</tr>
+<tr>
+<td>class</td>
+<td>声明类</td>
+</tr>
+<tr>
+<td>const</td>
+<td>保留字，未使用</td>
+</tr>
+<tr>
+<td>continue</td>
+<td>跳过当前循环剩余部分</td>
+</tr>
+<tr>
+<td>default</td>
+<td>switch 中的默认分支</td>
+</tr>
+<tr>
+<td>do</td>
+<td>do-while 循环的开始</td>
+</tr>
+<tr>
+<td>double</td>
+<td>双精度浮点数类型</td>
+</tr>
+<tr>
+<td>else</td>
+<td>if 条件分支的否定分支</td>
+</tr>
+<tr>
+<td>enum</td>
+<td>声明枚举类型（JDK 5 引入）</td>
+</tr>
+<tr>
+<td>extends</td>
+<td>继承类或接口</td>
+</tr>
+<tr>
+<td>final</td>
+<td>常量、不可继承类、不可重写方法</td>
+</tr>
+<tr>
+<td>finally</td>
+<td>异常处理中总会执行的代码块</td>
+</tr>
+<tr>
+<td>float</td>
+<td>单精度浮点数类型</td>
+</tr>
+<tr>
+<td>for</td>
+<td>循环结构</td>
+</tr>
+<tr>
+<td>goto</td>
+<td>保留字，未使用</td>
+</tr>
+<tr>
+<td>if</td>
+<td>条件判断</td>
+</tr>
+<tr>
+<td>implements</td>
+<td>实现接口</td>
+</tr>
+<tr>
+<td>import</td>
+<td>导入类或包</td>
+</tr>
+<tr>
+<td>instanceof</td>
+<td>判断对象是否为某类型实例</td>
+</tr>
+<tr>
+<td>int</td>
+<td>32 位有符号整数类型</td>
+</tr>
+<tr>
+<td>interface</td>
+<td>声明接口</td>
+</tr>
+<tr>
+<td>long</td>
+<td>64 位有符号整数类型</td>
+</tr>
+<tr>
+<td>native</td>
+<td>声明本地方法</td>
+</tr>
+<tr>
+<td>new</td>
+<td>创建对象实例</td>
+</tr>
+<tr>
+<td>package</td>
+<td>定义包</td>
+</tr>
+<tr>
+<td>private</td>
+<td>私有访问修饰符</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>受保护访问修饰符</td>
+</tr>
+<tr>
+<td>public</td>
+<td>公有访问修饰符</td>
+</tr>
+<tr>
+<td>return</td>
+<td>方法返回值</td>
+</tr>
+<tr>
+<td>short</td>
+<td>16 位有符号整数类型</td>
+</tr>
+<tr>
+<td>static</td>
+<td>静态成员（类级别）</td>
+</tr>
+<tr>
+<td>super</td>
+<td>父类引用</td>
+</tr>
+<tr>
+<td>switch</td>
+<td>多分支选择结构</td>
+</tr>
+<tr>
+<td>synchronized</td>
+<td>同步锁</td>
+</tr>
+<tr>
+<td>this</td>
+<td>当前对象引用</td>
+</tr>
+<tr>
+<td>throw</td>
+<td>手动抛出异常</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>声明方法可能抛出的异常</td>
+</tr>
+<tr>
+<td>transient</td>
+<td>序列化时忽略字段</td>
+</tr>
+<tr>
+<td>try</td>
+<td>开始异常捕获</td>
+</tr>
+<tr>
+<td>void</td>
+<td>表示无返回值</td>
+</tr>
+<tr>
+<td>volatile</td>
+<td>保证变量可见性和有序性</td>
+</tr>
+<tr>
+<td>while</td>
+<td>循环结构</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://like-dejavu.github.io/2026/05/01/%E5%85%B3%E9%94%AE%E5%AD%97/" data-id="cuidmLYhn40FDbNRQiE--imdk" data-title="java常见关键字" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-类与对象" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/04/24/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" class="article-date">
+  <time class="dt-published" datetime="2026-04-24T00:00:00.000Z" itemprop="datePublished">2026-04-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/04/24/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/">类与对象</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>类是没有实体的模板、设计图，它定义了某一类事物的共同特征（属性）和行为（方法）。</p>
+<p>对象是根据类的模板创建出来的具体实体，是类的实例化结果。</p>
+<p><strong>类是对象的模板，对象是类的实例</strong>。</p>
+<h2 id="定义类"><a href="#定义类" class="headerlink" title="定义类"></a>定义类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Phone</span> &#123;</span><br><span class="line">    String brand;  <span class="comment">// 品牌</span></span><br><span class="line">    String model;  <span class="comment">// 型号</span></span><br><span class="line">    String color;  <span class="comment">// 颜色</span></span><br><span class="line">    <span class="type">int</span> memory;    <span class="comment">// 内存</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">void</span> <span class="title function_">call</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(brand + <span class="string">&quot; &quot;</span> + model + <span class="string">&quot; 正在打电话&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">void</span> <span class="title function_">sendMessage</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(brand + <span class="string">&quot; &quot;</span> + model + <span class="string">&quot; 正在发消息&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://like-dejavu.github.io/2026/04/24/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" data-id="cuid9uFVvyNZc3oL_LNpXXkOO" data-title="类与对象" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-显示当前时间" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/04/15/%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/" class="article-date">
+  <time class="dt-published" datetime="2026-04-15T15:00:00.000Z" itemprop="datePublished">2026-04-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/04/15/%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/">Java 格式化当前系统时间</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在 Java 开发中，我们经常需要获取当前系统时间，并按照指定格式进行格式化输出。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">SimpleDateFormat</span> <span class="variable">sdf</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>();</span><br><span class="line">        sdf.applyPattern(<span class="string">&quot;yyyy-MM-dd HH:mm:ss a&quot;</span>);</span><br><span class="line">        <span class="type">Date</span> <span class="variable">date</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">        System.out.println(<span class="string">&quot;现在时间：&quot;</span> + sdf.format(date));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://like-dejavu.github.io/2026/04/15/%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/" data-id="cuidj6AVTpM4Iup1aOTSv3O6U" data-title="Java 格式化当前系统时间" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/" rel="tag">代码示例</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">后端开发</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-埃氏筛素数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/04/15/%E5%9F%83%E6%B0%8F%E7%AD%9B%E7%B4%A0%E6%95%B0/" class="article-date">
+  <time class="dt-published" datetime="2026-04-15T00:00:00.000Z" itemprop="datePublished">2026-04-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/04/15/%E5%9F%83%E6%B0%8F%E7%AD%9B%E7%B4%A0%E6%95%B0/">埃氏筛素数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>给定要筛数值的范围 n，从2开始，将每个素数的各倍数标记成合数。如果一个数没有被之前的数标记，那它一定是素数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SieveOfEratosthenes</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line">        <span class="type">boolean</span>[] <span class="variable">isPrime</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">boolean</span>[n + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt;= n; i++) isPrime[i] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i * i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (isPrime[i]) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i * i; j &lt;= n; j += i) isPrime[j] = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (isPrime[i]) System.out.print(i + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="欧拉筛优化"><a href="#欧拉筛优化" class="headerlink" title="欧拉筛优化"></a>欧拉筛优化</h3><p>在埃氏筛法中，一个合数可能会被筛多次，欧拉筛让一个合数只被筛一次。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> MAXSIZE=<span class="number">1e7</span>;</span><br><span class="line"><span class="type">bool</span> isPrime[MAXSIZE<span class="number">+1</span>];</span><br><span class="line"><span class="type">int</span> primes[MAXSIZE];</span><br><span class="line"><span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Euler_Sieve</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(isPrime, <span class="literal">true</span>, <span class="keyword">sizeof</span>(isPrime));</span><br><span class="line">    isPrime[<span class="number">0</span>] = isPrime[<span class="number">1</span>] = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (isPrime[i]) primes[cnt++] = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; cnt &amp;&amp; i * primes[j] &lt;= n; ++j) &#123;</span><br><span class="line">            isPrime[i * primes[j]] = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % primes[j] == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://like-dejavu.github.io/2026/04/15/%E5%9F%83%E6%B0%8F%E7%AD%9B%E7%B4%A0%E6%95%B0/" data-id="cuidgUi_vxvl7wAkyxSZVP5nM" data-title="埃氏筛素数" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/04/09/1/" class="article-date">
+  <time class="dt-published" datetime="2026-04-09T00:00:00.000Z" itemprop="datePublished">2026-04-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/04/09/1/">我的第一个Java程序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Hello</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello Java!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://like-dejavu.github.io/2026/04/09/1/" data-id="cuidVhVsqbnb9-gCmhpLHXIiE" data-title="我的第一个Java程序" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python%E5%85%A5%E9%97%A8/">Python入门</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/" rel="tag">代码示例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">数据分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" rel="tag">文件处理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/" style="font-size: 10px;">代码示例</a> <a href="/tags/%E5%85%A5%E9%97%A8/" style="font-size: 20px;">入门</a> <a href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">后端开发</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 10px;">数据分析</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" style="font-size: 10px;">文件处理</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/10/">十月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/06/">六月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/05/">五月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">四月 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/10/19/2026-10-19-python/">python</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/18/2026-10-22-python/">Python实验二</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/11/2026-10-11-python/">Python</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/05/2026-10-05-python-experiment/">Python实验一</a>
+          </li>
+        
+          <li>
+            <a href="/2026/06/07/%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA%E7%9A%84%E5%8C%BA%E5%88%AB/">Java两种创建线程方式：继承Thread类 VS 实现Runnable接口</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 dejavu<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/categories" class="mobile-nav-link">分类</a>
+  
+    <a href="/tags" class="mobile-nav-link">标签</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<!-- hexo injector body_end start --><script src="/js/dejavu-ui.js" defer></script><!-- hexo injector body_end end --></body>
+</html>
