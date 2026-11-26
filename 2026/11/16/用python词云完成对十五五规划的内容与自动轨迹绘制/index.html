@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head><!-- hexo injector head_begin start --><script>(function(){try{var t=localStorage.getItem('dj-theme');if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}window.DJ_SITE={"title":"dejavu","subtitle":"","description":"Java · 后端开发 · 技术笔记"};})();</script><!-- hexo injector head_begin end -->
+  <meta charset="utf-8">
+  
+  
+  <title>用python词云完成对十五五规划的内容与自动轨迹绘制 | dejavu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="date: 2026-11-12categories: Python作业#自动轨迹绘制 12345678910111213141516171819202122import turtle as tt.title(&#x27;自动轨迹绘制&#x27;)t.setup(800,600,0,0)t.pencolor(&quot;red&quot;)t.pensize(5)dls&#x3D;[]with open">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用python词云完成对十五五规划的内容与自动轨迹绘制">
+<meta property="og:url" content="https://like-dejavu.github.io/2026/11/16/%E7%94%A8python%E8%AF%8D%E4%BA%91%E5%AE%8C%E6%88%90%E5%AF%B9%E5%8D%81%E4%BA%94%E4%BA%94%E8%A7%84%E5%88%92%E7%9A%84%E5%86%85%E5%AE%B9%E4%B8%8E%E8%87%AA%E5%8A%A8%E8%BD%A8%E8%BF%B9%E7%BB%98%E5%88%B6/index.html">
+<meta property="og:site_name" content="dejavu">
+<meta property="og:description" content="date: 2026-11-12categories: Python作业#自动轨迹绘制 12345678910111213141516171819202122import turtle as tt.title(&#x27;自动轨迹绘制&#x27;)t.setup(800,600,0,0)t.pencolor(&quot;red&quot;)t.pensize(5)dls&#x3D;[]with open">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-11-16T11:35:59.000Z">
+<meta property="article:modified_time" content="2026-11-26T10:06:59.786Z">
+<meta property="article:author" content="dejavu">
+<meta property="article:tag" content="Java, 后端开发, 技术笔记">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="dejavu" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<!-- hexo injector head_end start --><link rel="stylesheet" href="/css/dejavu-ui.css" media="all"><link rel="icon" type="image/png" sizes="256x256" href="/favicon.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><meta name="theme-color" content="#1b1d26"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.2"></head>
+
+<body><!-- hexo injector body_begin start --><div id="dj-stats" hidden data-stats="{&quot;posts&quot;:19,&quot;categories&quot;:5,&quot;tags&quot;:7}"></div><!-- hexo injector body_begin end -->
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">dejavu</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/categories">分类</a>
+        
+          <a class="main-nav-link" href="/tags">标签</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://like-dejavu.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-用python词云完成对十五五规划的内容与自动轨迹绘制" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/11/16/%E7%94%A8python%E8%AF%8D%E4%BA%91%E5%AE%8C%E6%88%90%E5%AF%B9%E5%8D%81%E4%BA%94%E4%BA%94%E8%A7%84%E5%88%92%E7%9A%84%E5%86%85%E5%AE%B9%E4%B8%8E%E8%87%AA%E5%8A%A8%E8%BD%A8%E8%BF%B9%E7%BB%98%E5%88%B6/" class="article-date">
+  <time class="dt-published" datetime="2026-11-16T11:35:59.000Z" itemprop="datePublished">2026-11-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      用python词云完成对十五五规划的内容与自动轨迹绘制
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="date-2026-11-12categories-Python作业"><a href="#date-2026-11-12categories-Python作业" class="headerlink" title="date: 2026-11-12categories: Python作业"></a>date: 2026-11-12<br>categories: Python作业</h2><p>#自动轨迹绘制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import turtle as t</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">t.title(&#x27;自动轨迹绘制&#x27;)</span><br><span class="line">t.setup(800,600,0,0)</span><br><span class="line">t.pencolor(&quot;red&quot;)</span><br><span class="line">t.pensize(5)</span><br><span class="line"></span><br><span class="line">dls=[]</span><br><span class="line">with open (&quot;data.txt&quot;) as f:</span><br><span class="line">    for line in f:</span><br><span class="line">        line = line.replace(&quot;\n&quot;,&quot;&quot;)</span><br><span class="line">        dls.append(list(map(eval,line.split(&quot;,&quot;))))</span><br><span class="line"></span><br><span class="line">for i in range(len(dls)):</span><br><span class="line">    t.pencolor(dls[i][3],dls[i][4],dls[i][5])</span><br><span class="line">    t.forward(dls[i][0])</span><br><span class="line">    if dls[i][1]:</span><br><span class="line">        t.right(dls[i][2])</span><br><span class="line">    else:</span><br><span class="line">        t.left(dls[i][2])</span><br><span class="line">t.done()</span><br></pre></td></tr></table></figure>
+
+
+<p>#用python词云完成对十五五规划的内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">import re</span><br><span class="line">import urllib.request</span><br><span class="line">from pathlib import Path</span><br><span class="line"></span><br><span class="line">from wordcloud import WordCloud</span><br><span class="line"></span><br><span class="line">BASE = Path(__file__).resolve().parent</span><br><span class="line">TXT = BASE / &quot;data&quot; / &quot;十五五规划纲要.txt&quot;</span><br><span class="line">OUT = BASE / &quot;output&quot; / &quot;十五五词云_仅wordcloud.png&quot;</span><br><span class="line">SOURCE = &quot;https://www.gov.cn/yaowen/liebiao/202603/content_7062633.htm&quot;</span><br><span class="line"></span><br><span class="line"># 中文字体（词云必须指定，否则全是方块）</span><br><span class="line">FONT = &quot;C:/Windows/Fonts/simhei.ttf&quot;</span><br><span class="line"></span><br><span class="line"># 固定深红金色板：比 colormap=&quot;Reds&quot; 更清楚，低频词不会淡到看不见</span><br><span class="line">PALETTE = [&quot;#9E1B32&quot;, &quot;#B62838&quot;, &quot;#C33C2E&quot;, &quot;#D2691E&quot;, &quot;#C08A2E&quot;, &quot;#7A2636&quot;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def color_func(word, font_size, position, orientation, random_state=None, **kwargs):</span><br><span class="line">    return (random_state or random).choice(PALETTE)</span><br><span class="line"></span><br><span class="line"># 规划关键词表：想加词、减词，直接改这里就行</span><br><span class="line">WORDS = &quot;&quot;&quot;</span><br><span class="line">中国式现代化 高质量发展 新质生产力 现代化产业体系 科技自立自强 全国统一大市场 十五五</span><br><span class="line">人工智能 未来产业 新兴产业 战略性新兴产业 先进制造业 传统产业 实体经济 数字经济 智能经济</span><br><span class="line">科技创新 产业创新 关键核心技术 原始创新 基础研究 科技成果转化 知识产权 数据要素 算力 算法 大模型</span><br><span class="line">具身智能 机器人 低空经济 量子科技 生物制造 脑机接口 集成电路 工业母机 高端装备 生物医药 新材料</span><br><span class="line">新能源 新型储能 新型电力系统 绿色低碳 绿色转型 碳达峰 碳中和 碳排放 生态文明 污染防治 生态修复</span><br><span class="line">美丽中国 乡村全面振兴 乡村振兴 粮食安全 耕地保护 农业农村现代化 区域协调发展 新型城镇化 城乡融合</span><br><span class="line">城市更新 共同富裕 基本公共服务 社会保障 就业优先 高质量充分就业 生育支持 养老服务 银发经济</span><br><span class="line">托育服务 健康中国 医疗卫生 公立医院 教育强国 科技强国 人才强国 制造强国 质量强国 网络强国</span><br><span class="line">文化强国 高等教育 职业教育 义务教育 学前教育 立德树人 中华优秀传统文化 文化产业 文化事业</span><br><span class="line">民营经济 营商环境 公平竞争 专精特新 高水平对外开放 制度型开放 共建一带一路 人类命运共同体</span><br><span class="line">粤港澳大湾区 京津冀 长三角 长江经济带 黄河流域 西部大开发 东北振兴 中部崛起</span><br><span class="line">国家安全 总体国家安全观 能源安全 产业链供应链 防灾减灾 应急管理 公共卫生 国防和军队现代化</span><br><span class="line">全过程人民民主 全面依法治国 全面从严治党 党的全面领导 扩大内需 提振消费 国内大循环 国际循环</span><br><span class="line">新发展格局 政府投资 民间投资 财政政策 货币政策 宏观治理 绿色金融 普惠金融 数字金融</span><br><span class="line">投资于人 投资于物 重大工程项目 规划实施 基础设施 供给侧 需求侧</span><br><span class="line">发展 建设 创新 改革 开放 安全 服务 治理 产业 企业 科技 教育 就业 消费 投资 生态 能源 交通</span><br><span class="line">文化 医疗 养老 住房 收入 乡村 城市 区域 市场 金融 数字 智能 绿色 低碳 现代化 高质量 人民群众</span><br><span class="line">&quot;&quot;&quot;.split()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def load_text() -&gt; str:</span><br><span class="line">    &quot;&quot;&quot;优先读本地缓存；没有就用标准库联网抓纲要全文。&quot;&quot;&quot;</span><br><span class="line">    if TXT.exists():</span><br><span class="line">        text = TXT.read_text(encoding=&quot;utf-8&quot;)</span><br><span class="line">    else:</span><br><span class="line">        req = urllib.request.Request(SOURCE, headers=&#123;&quot;User-Agent&quot;: &quot;Mozilla/5.0&quot;&#125;)</span><br><span class="line">        page = urllib.request.urlopen(req, timeout=60).read().decode(&quot;utf-8&quot;, &quot;ignore&quot;)</span><br><span class="line">        start = page.find(&#x27;id=&quot;UCAP-CONTENT&quot;&#x27;)</span><br><span class="line">        body = page[page.find(&quot;&gt;&quot;, start) + 1:]</span><br><span class="line">        paras = [re.sub(r&quot;&lt;[^&gt;]+&gt;&quot;, &quot;&quot;, p) for p in re.findall(r&quot;&lt;p[^&gt;]*&gt;(.*?)&lt;/p&gt;&quot;, body, re.S)]</span><br><span class="line">        text = &quot;\n&quot;.join(paras)</span><br><span class="line">        TXT.parent.mkdir(exist_ok=True)</span><br><span class="line">        TXT.write_text(text, encoding=&quot;utf-8&quot;)</span><br><span class="line"></span><br><span class="line">    # 剔除目录（章节标题会在正文重复出现，重复计数会拉高词频）</span><br><span class="line">    first = text.find(&quot;第一篇&quot;)</span><br><span class="line">    second = text.find(&quot;第一篇&quot;, first + 1)</span><br><span class="line">    return text[second:] if second &gt; 0 else text</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def build_freq(text: str) -&gt; dict:</span><br><span class="line">    &quot;&quot;&quot;长词优先、命中后从文本中剔除，避免「高质量发展」被重复算进「发展」。&quot;&quot;&quot;</span><br><span class="line">    freq, rest = &#123;&#125;, text</span><br><span class="line">    for w in sorted(set(WORDS), key=lambda x: (-len(x), x)):</span><br><span class="line">        n = rest.count(w)</span><br><span class="line">        if n:</span><br><span class="line">            freq[w] = n</span><br><span class="line">            rest = rest.replace(w, &quot; &quot;)</span><br><span class="line">    return freq</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main() -&gt; None:</span><br><span class="line">    text = load_text()</span><br><span class="line">    freq = build_freq(text)</span><br><span class="line">    print(f&quot;正文 &#123;len(text):,&#125; 字，命中 &#123;len(freq)&#125; 个关键词&quot;)</span><br><span class="line">    print(&quot;Top 15:&quot;, sorted(freq.items(), key=lambda x: -x[1])[:15])</span><br><span class="line"></span><br><span class="line">    OUT.parent.mkdir(exist_ok=True)</span><br><span class="line">    wc = WordCloud(</span><br><span class="line">        font_path=FONT,</span><br><span class="line">        width=1600, height=1000,</span><br><span class="line">        background_color=&quot;white&quot;,</span><br><span class="line">        color_func=color_func,</span><br><span class="line">        max_words=180,</span><br><span class="line">        relative_scaling=0.45,</span><br><span class="line">        prefer_horizontal=1.0,   # 全部横排，中文更好读，也避免竖排贴边被裁</span><br><span class="line">        margin=6,</span><br><span class="line">        random_state=42,</span><br><span class="line">        collocations=False,</span><br><span class="line">    ).generate_from_frequencies(freq)</span><br><span class="line">    wc.to_file(OUT)</span><br><span class="line">    print(&quot;已保存:&quot;, OUT)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<!-- issue: 8 -->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://like-dejavu.github.io/2026/11/16/%E7%94%A8python%E8%AF%8D%E4%BA%91%E5%AE%8C%E6%88%90%E5%AF%B9%E5%8D%81%E4%BA%94%E4%BA%94%E8%A7%84%E5%88%92%E7%9A%84%E5%86%85%E5%AE%B9%E4%B8%8E%E8%87%AA%E5%8A%A8%E8%BD%A8%E8%BF%B9%E7%BB%98%E5%88%B6/" data-id="cuidKliLQ7N_6kWidQGKlYkkM" data-title="用python词云完成对十五五规划的内容与自动轨迹绘制" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2026/11/26/%E5%AE%9E%E9%AA%8C_%E5%88%97%E8%A1%A8%E5%85%83%E7%BB%84%E9%9B%86%E5%90%88/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          实验_列表元组集合
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2026/11/13/%E8%92%99%E5%93%A5%E5%8D%A1%E7%BD%97%E6%96%B9%E6%B3%95%E7%94%BB%E5%9B%BE%E5%BD%A2%E4%B8%8E%E5%AD%97%E7%AC%A6%E7%94%B0%E5%AD%97%E6%A0%BC%E7%BB%98%E5%88%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">蒙哥卡罗方法画图形与字符田字格绘制</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python%E4%BD%9C%E4%B8%9A/">Python作业</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python%E5%85%A5%E9%97%A8/">Python入门</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/" rel="tag">代码示例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">数据分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" rel="tag">文件处理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/" style="font-size: 10px;">代码示例</a> <a href="/tags/%E5%85%A5%E9%97%A8/" style="font-size: 20px;">入门</a> <a href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">后端开发</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 10px;">数据分析</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" style="font-size: 10px;">文件处理</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">十一月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/10/">十月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/06/">六月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/05/">五月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">四月 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/11/26/%E5%AE%9E%E9%AA%8C_%E5%88%97%E8%A1%A8%E5%85%83%E7%BB%84%E9%9B%86%E5%90%88/">实验_列表元组集合</a>
+          </li>
+        
+          <li>
+            <a href="/2026/11/16/%E7%94%A8python%E8%AF%8D%E4%BA%91%E5%AE%8C%E6%88%90%E5%AF%B9%E5%8D%81%E4%BA%94%E4%BA%94%E8%A7%84%E5%88%92%E7%9A%84%E5%86%85%E5%AE%B9%E4%B8%8E%E8%87%AA%E5%8A%A8%E8%BD%A8%E8%BF%B9%E7%BB%98%E5%88%B6/">用python词云完成对十五五规划的内容与自动轨迹绘制</a>
+          </li>
+        
+          <li>
+            <a href="/2026/11/13/%E8%92%99%E5%93%A5%E5%8D%A1%E7%BD%97%E6%96%B9%E6%B3%95%E7%94%BB%E5%9B%BE%E5%BD%A2%E4%B8%8E%E5%AD%97%E7%AC%A6%E7%94%B0%E5%AD%97%E6%A0%BC%E7%BB%98%E5%88%B6/">蒙哥卡罗方法画图形与字符田字格绘制</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/19/2026-10-19-python/">python</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/18/2026-10-22-python/">Python实验二</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 dejavu<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/categories" class="mobile-nav-link">分类</a>
+  
+    <a href="/tags" class="mobile-nav-link">标签</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<!-- hexo injector body_end start --><script src="/js/dejavu-ui.js" defer></script><!-- hexo injector body_end end --></body>
+</html>
